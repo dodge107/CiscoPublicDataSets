@@ -45,6 +45,7 @@ All product CSV files use identical columns:
 | `eol_status` | `Active`, `EOL`, or `EOL-Pending` |
 | `source_ids` | Comma-separated IDs referencing rows in `cisco_sources.csv` |
 | `notes` | Migration guidance, caveats, key features |
+| `last_updated` | ISO date (YYYY-MM-DD) when this row was last modified |
 
 ---
 

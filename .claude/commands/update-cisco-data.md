@@ -175,6 +175,7 @@ Wait for all agents to complete. Then for each product row where the agent found
 3. Update `eol_status` if a new EoL announcement was found
 4. Add new product rows for any new platform families found, continuing the file's ID sequence
 5. Add a note in the `notes` field if the status changed significantly (e.g., "EOL announced MM/YYYY")
+6. Set `last_updated` to today's date (YYYY-MM-DD) for every row you modify or add. Do not touch `last_updated` on rows where nothing changed.
 
 **Do not change any field that the agent did not find updated data for.**
 
@@ -208,5 +209,6 @@ Do not rewrite any other section of the README unless a new OS type was added.
 - **Never guess PIDs.** Only add PIDs you found explicitly in Cisco documentation.
 - **Never mark EOL** without a Cisco EoL announcement link.
 - **Do not update `last_verified`** for a source unless the agent actually fetched and confirmed the page.
+- **Always stamp `last_updated`** (today's date) on every product row you modify or add. Leave it unchanged on unmodified rows.
 - **Preserve all existing notes** — append to them rather than replacing.
 - **SaaS / continuous-delivery products** (ThousandEyes, Umbrella, Duo, Meraki Dashboard, Webex Calling, XDR): `latest_version` and `gold_version` should both be `Continuous delivery (SaaS)` unless Cisco publishes discrete version numbers.
