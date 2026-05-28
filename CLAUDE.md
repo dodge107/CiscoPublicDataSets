@@ -7,24 +7,27 @@ This project maintains CSV-based reference datasets of Cisco products for use in
 
 All CSV files live in the `data/` subdirectory.
 
-| File | Product Domain | ID Prefix |
-|---|---|---|
-| `data/cisco_campus_switching.csv` | Campus switching (Catalyst 9200/9300/9400/9500/9600, 3850/3650/2960-X, 1000/1300) | P001– |
-| `data/cisco_dc_switching.csv` | DC switching (Nexus 9300/9500/7000/5500/3000/3500/2000 FEX) | P011– |
-| `data/cisco_enterprise_routing.csv` | Enterprise routing (ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR/C8000V) | P018– |
-| `data/cisco_sp_routing.csv` | SP routing core (ASR 9000, NCS 5500/540/560/5000/1000, Cisco 8000) | P025– |
-| `data/cisco_wireless.csv` | Wireless (Catalyst 9800 WLCs, 9100 APs Wi-Fi 6/6E/7, Aironet legacy) | P031– |
-| `data/cisco_security.csv` | Firewalls (Secure Firewall ASA 5500-X/5585-X/ASAv, FTD 1000/2100/3100/4100/4200, FPR 9300) | P038– |
-| `data/cisco_sdwan.csv` | SD-WAN (Catalyst SD-WAN vEdge, cEdge, Controllers) | P047– |
-| `data/cisco_software.csv` | Management & software platforms (Catalyst Center, ISE, NSO, ThousandEyes, etc.) | S001– |
-| `data/cisco_sp_extended.csv` | SP routing extended (ASR 920/901, NCS 2000/4000, XRv 9000, BNG) | SP001– |
-| `data/cisco_collaboration.csv` | UC & Collaboration (CUCM, Unity, Expressway, IP Phones, Webex devices) | C001– |
-| `data/cisco_meraki.csv` | Meraki cloud-managed (MX, MS, MR, MV, MT, MG, Z) | M001– |
-| `data/cisco_dc_compute.csv` | DC, ACI & Compute (APIC, MDS SAN, UCS, HyperFlex) | DC001– |
-| `data/cisco_security_extended.csv` | Extended security (Secure Email, Web, Endpoint, XDR, SASE, Cyber Vision, FMC) | SE001– |
-| `data/cisco_industrial.csv` | Industrial networking / IoT (IE, IR, IW, Cyber Vision, IC3000, IoT OD) | IO001– |
-| `data/cisco_sp_mobile.csv` | SP mobile core (ASR 5000/5500, Ultra Packet Core, 5G SA NFs, BroadWorks) | SM001– |
-| `data/cisco_sources.csv` | Source URL registry (SRC-001 to SRC-099) | SRC-001– |
+Product IDs use a uniform `XXX-NNN` format: 3-letter domain code, dash, 3-digit zero-padded sequence. IDs are globally unique across all product files and carry over into the combined file.
+
+| File | Product Domain | ID Prefix | Current Range |
+|---|---|---|---|
+| `data/cisco_campus_switching.csv` | Campus switching (Catalyst 9200/9300/9400/9500/9600, 3850/3650/2960-X, 1000/1300, 6500/6800/4500/3750-X legacy) | CSW | CSW-001–CSW-014 |
+| `data/cisco_dc_switching.csv` | DC switching (Nexus 9300/9500/7000/5500/3000/3500/2000 FEX) | DCW | DCW-001–DCW-007 |
+| `data/cisco_enterprise_routing.csv` | Enterprise routing (ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR/C8000V, ISR G2 legacy) | ERT | ERT-001–ERT-009 |
+| `data/cisco_sp_routing.csv` | SP routing core (ASR 9000, NCS 5500/540/560/5000/1000, Cisco 8000) | SPR | SPR-001–SPR-006 |
+| `data/cisco_wireless.csv` | Wireless (Catalyst 9800 WLCs, 9100 APs Wi-Fi 6/6E/7, Aironet + WLC 5500/8500 legacy) | WLS | WLS-001–WLS-010 |
+| `data/cisco_security.csv` | Firewalls (ASA 5500-X/5585-X/ASAv, FTD 1000/2100/3100/4100/4200, FPR 9300, ASA 5500 original legacy) | FWL | FWL-001–FWL-010 |
+| `data/cisco_sdwan.csv` | SD-WAN (Catalyst SD-WAN vEdge, cEdge, Controllers) | SDW | SDW-001–SDW-003 |
+| `data/cisco_software.csv` | Management & software platforms (Catalyst Center, ISE, NSO, ThousandEyes, etc.) | SFT | SFT-001–SFT-015 |
+| `data/cisco_sp_extended.csv` | SP routing extended (ASR 920/901, NCS 2000/4000, XRv 9000, BNG, CRS/ME legacy) | SPX | SPX-001–SPX-012 |
+| `data/cisco_collaboration.csv` | UC & Collaboration (CUCM, Unity, Expressway, IP Phones, Webex devices) | CLB | CLB-001–CLB-011 |
+| `data/cisco_meraki.csv` | Meraki cloud-managed (MX, MS, MR, MV, MT, MG, Z) | MRK | MRK-001–MRK-015 |
+| `data/cisco_dc_compute.csv` | DC, ACI & Compute (APIC, MDS SAN, UCS, HyperFlex) | DCC | DCC-001–DCC-015 |
+| `data/cisco_security_extended.csv` | Extended security (Secure Email, Web, Endpoint, XDR, SASE, Cyber Vision, FMC) | SES | SES-001–SES-012 |
+| `data/cisco_industrial.csv` | Industrial networking / IoT (IE, IR, IW, Cyber Vision, IC3000, IoT OD) | IND | IND-001–IND-014 |
+| `data/cisco_sp_mobile.csv` | SP mobile core (ASR 5000/5500, Ultra Packet Core, 5G SA NFs, BroadWorks) | SPM | SPM-001–SPM-011 |
+| `data/cisco_all_products.csv` | **Combined all-in-one** — all product files merged (auto-generated, do not edit directly) | — | all 164 rows |
+| `data/cisco_sources.csv` | Source URL registry | SRC | SRC-001–SRC-109 |
 
 ## CSV Schema (all product files share identical columns)
 
@@ -46,7 +49,7 @@ source_id, description, platform_scope, url, last_verified
 ```
 
 - `last_verified`: ISO date (YYYY-MM-DD) when the URL was last confirmed live and relevant
-- Source IDs are sequential: next available is SRC-100
+- Source IDs are sequential: next available is SRC-110
 
 ## Key Conventions
 

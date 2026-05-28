@@ -12,24 +12,25 @@ All CSV files live in the `data/` subdirectory.
 
 | File | Rows | Description |
 |---|---|---|
-| `data/cisco_campus_switching.csv` | 10 | Campus switching — Catalyst 9200/9300/9400/9500/9600, 3850/3650/2960-X, 1000/1300 |
+| `data/cisco_campus_switching.csv` | 14 | Campus switching — Catalyst 9200/9300/9400/9500/9600, 3850/3650/2960-X, 1000/1300, **6500/6800/4500/3750-X (legacy EOL)** |
 | `data/cisco_dc_switching.csv` | 7 | DC switching — Nexus 9300/9500/7000/7700, 5500/5600, 3000/3100, 3500, 2000 FEX |
-| `data/cisco_enterprise_routing.csv` | 7 | Enterprise routing — ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR/C8000V |
+| `data/cisco_enterprise_routing.csv` | 9 | Enterprise routing — ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR/C8000V, **ISR G2 2900/3900 (legacy EOL)** |
 | `data/cisco_sp_routing.csv` | 6 | SP routing — ASR 9000, NCS 5500, NCS 540/560, NCS 5000, Cisco 8000, NCS 1000 optical |
-| `data/cisco_wireless.csv` | 7 | Wireless — Catalyst 9800 WLCs (×4), 9100 APs (Wi-Fi 6/6E/7), Aironet legacy |
-| `data/cisco_security.csv` | 9 | Firewalls — ASA 5500-X/ASAv, Secure Firewall FTD 1000/2100/3100/4100/4200, FPR 9300 |
+| `data/cisco_wireless.csv` | 10 | Wireless — Catalyst 9800 WLCs (×4), 9100 APs (Wi-Fi 6/6E/7), Aironet legacy, **WLC 5500/8500, Aironet 3700/3600/2700/1700 (legacy EOL)** |
+| `data/cisco_security.csv` | 10 | Firewalls — ASA 5500-X/ASAv, Secure Firewall FTD 1000/2100/3100/4100/4200, FPR 9300, **ASA 5500 original (legacy EOL)** |
 | `data/cisco_sdwan.csv` | 3 | SD-WAN — Catalyst SD-WAN vEdge (EOL), cEdge, Controllers |
 | `data/cisco_software.csv` | 15 | Management and software platforms — Catalyst Center, ISE, NSO, ThousandEyes, Secure Client, XDR, Umbrella, Duo |
-| `data/cisco_sp_extended.csv` | 10 | Additional SP products — ASR 920/901, NCS 2000/4000/6000, XRv 9000, BNG |
-| `data/cisco_collaboration.csv` | 16 | Unified Communications and Collaboration — CUCM, Unity Connection, Expressway, IP Phones, Webex devices |
+| `data/cisco_sp_extended.csv` | 12 | Additional SP products — ASR 920/901, NCS 2000/4000/6000, XRv 9000, BNG, **CRS-1/3, ME 3600X/3800X (legacy EOL)** |
+| `data/cisco_collaboration.csv` | 11 | Unified Communications and Collaboration — CUCM, Unity Connection, Expressway, IP Phones, Webex devices |
 | `data/cisco_meraki.csv` | 15 | Meraki cloud-managed products — MX, MS, MR, MV, MT, MG, Z series |
 | `data/cisco_dc_compute.csv` | 15 | DC compute and ACI — APIC, ACI, MDS SAN, UCS B/C/X-Series, Fabric Interconnects, HyperFlex |
 | `data/cisco_security_extended.csv` | 12 | Extended security portfolio — Secure Email, Secure Web, Secure Endpoint, XDR, Secure Access SASE, Cyber Vision, FMC |
 | `data/cisco_industrial.csv` | 14 | Industrial networking / IoT — IE switches, IR routers, IW APs, Cyber Vision, IoT OD |
 | `data/cisco_sp_mobile.csv` | 11 | SP mobile core — ASR 5000/5500/5700, Ultra Packet Core, 5G SA (AMF/SMF/UPF/PCF), BroadWorks, IoT Control Center |
-| `data/cisco_sources.csv` | 99 | Source URLs (SRC-001 to SRC-099) for refreshing version data |
+| `data/cisco_all_products.csv` | 164 | **Combined all-in-one dataset** — all product files merged into a single CSV (same schema, auto-generated) |
+| `data/cisco_sources.csv` | 110 | Source URLs (SRC-001 to SRC-109) for refreshing version data |
 
-**Total product entries: 157**
+**Total product entries: 164**
 
 ---
 
@@ -37,9 +38,29 @@ All CSV files live in the `data/` subdirectory.
 
 All product CSV files use identical columns:
 
+All product IDs use a uniform `XXX-NNN` format — 3-letter domain code + 3-digit sequence (e.g. `CSW-001`, `FWL-010`). IDs are globally unique across all files and carry through to the combined `cisco_all_products.csv`.
+
+| File | Prefix | Example |
+|---|---|---|
+| cisco_campus_switching | CSW | CSW-001 |
+| cisco_dc_switching | DCW | DCW-001 |
+| cisco_enterprise_routing | ERT | ERT-001 |
+| cisco_sp_routing | SPR | SPR-001 |
+| cisco_wireless | WLS | WLS-001 |
+| cisco_security | FWL | FWL-001 |
+| cisco_sdwan | SDW | SDW-001 |
+| cisco_software | SFT | SFT-001 |
+| cisco_sp_extended | SPX | SPX-001 |
+| cisco_collaboration | CLB | CLB-001 |
+| cisco_meraki | MRK | MRK-001 |
+| cisco_dc_compute | DCC | DCC-001 |
+| cisco_security_extended | SES | SES-001 |
+| cisco_industrial | IND | IND-001 |
+| cisco_sp_mobile | SPM | SPM-001 |
+
 | Field | Description |
 |---|---|
-| `product_id` | Unique identifier per file (P001–, S001–, SP001–, C001–, M001–) |
+| `product_id` | Globally unique identifier — format `XXX-NNN` (see prefix table above) |
 | `product_family` | Marketing name (e.g., Catalyst 9300, Meraki MX, CUCM) |
 | `product_series` | Model variants within the family |
 | `example_pids` | Representative Cisco product IDs (orderable SKUs) |
@@ -57,9 +78,9 @@ All product CSV files use identical columns:
 
 ## cisco_campus_switching.csv — Campus Switching
 
-Catalyst 9200, 9300, 9400, 9500, 9600 (IOS-XE 26.1.x / gold 17.15.5) · Catalyst 3850/3650 (EOL) · 2960-X (EOL) · 1000/1300 (SMB)
+Catalyst 9200, 9300, 9400, 9500, 9600 (IOS-XE 26.1.x / gold 17.15.5) · Catalyst 3850/3650 (EOL) · 2960-X (EOL) · 1000/1300 (SMB) · **Catalyst 6500 (EOL) · 6800 (EOL) · 4500/4500-E (EOL) · 3750-X/3750-G (EOL)**
 
-EOL status: **7 Active · 3 EOL**
+EOL status: **7 Active · 7 EOL**
 
 ---
 
@@ -73,9 +94,9 @@ EOL status: **4 Active · 1 EOL · 2 EOL-Pending**
 
 ## cisco_enterprise_routing.csv — Enterprise Routing
 
-ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR 1000V / Catalyst 8000V — all running IOS-XE 26.1.x / gold 17.15.x
+ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR 1000V / Catalyst 8000V — all running IOS-XE 26.1.x / gold 17.15.x · **ISR G2 2900/3900 (EOL, IOS 15.9(3)M10 final)**
 
-EOL status: **7 Active**
+EOL status: **7 Active · 2 EOL**
 
 ---
 
@@ -89,17 +110,17 @@ EOL status: **5 Active · 1 EOL**
 
 ## cisco_wireless.csv — Wireless
 
-Catalyst 9800-40/80/L WLC + 9800-CL (virtual) · 9100 APs Wi-Fi 6 (9115/9120/9130) · 9100 APs Wi-Fi 6E/7 (9136/9162/9164/9166) · Aironet 4800/3800/2800 (EOL)
+Catalyst 9800-40/80/L WLC + 9800-CL (virtual) · 9100 APs Wi-Fi 6 (9115/9120/9130) · 9100 APs Wi-Fi 6E/7 (9136/9162/9164/9166) · Aironet 4800/3800/2800 (EOL) · **WLC 5500/8500 (EOL) · Aironet 3700/3600/2700/1700 (EOL)**
 
-EOL status: **6 Active · 1 EOL**
+EOL status: **6 Active · 4 EOL**
 
 ---
 
 ## cisco_security.csv — Firewalls
 
-Secure Firewall ASA 5500-X (EOL) · ASA 5585-X (EOL) · ASAv (Active, 9.24.x) · FTD 1000/2100/3100/4100/4200 · Firepower 9300 — FTD 10.0 (gold 7.6.4)
+Secure Firewall ASA 5500-X (EOL) · ASA 5585-X (EOL) · ASAv (Active, 9.24.x) · FTD 1000/2100/3100/4100/4200 · Firepower 9300 — FTD 10.0 (gold 7.6.4) · **ASA 5500 original 5505/5510/5520/5540/5550 (EOL)**
 
-EOL status: **7 Active · 2 EOL**
+EOL status: **7 Active · 3 EOL**
 
 ---
 
@@ -146,6 +167,8 @@ EOL status: **2 Active · 1 EOL**
 | NCS 55A1/55A2-MOD | SP Metro Aggregation (fixed) | IOS-XR 26.1.1 |
 | NCS 6000 | SP Core (legacy) | IOS-XR 6.6.x (EOL) |
 | vBNG / BNG | SP Broadband Subscriber Management | IOS-XR 26.1.1 |
+| **CRS-1 / CRS-3** | **SP Backbone Core (legacy)** | **IOS-XR 5.3.4 (EOL)** |
+| **ME 3600X / ME 3800X** | **Metro Ethernet Access (legacy)** | **IOS-XE 3.8.0E (EOL)** |
 
 ---
 
@@ -268,17 +291,28 @@ All Meraki products are managed entirely via the **Meraki Dashboard** (cloud Saa
 | Cisco IoT Control Center | SP SIM / IoT Connectivity Mgmt | SaaS (continuous) |
 | Cisco NFVI / VIM | SP NFV Infrastructure (OpenStack) | 5.x |
 
+## cisco_all_products.csv — Combined All-Products Dataset
+
+A single-file merge of all 15 product CSVs above. Uses the same schema (identical columns). Useful for:
+- Bulk queries and analysis across the entire Cisco product portfolio
+- AI/ML training or retrieval where a single knowledge source is preferred
+- Cross-domain EOL reporting
+
+**164 product rows.** Auto-generated — do not edit directly. Regenerate using the Python script in Step 5 of `/update-cisco-data` after any product CSV change.
+
+---
+
 ## cisco_sources.csv — Source Reference
 
 | Field | Description |
 |---|---|
-| `source_id` | Unique ID (SRC-001 to SRC-099) referenced in all product files |
+| `source_id` | Unique ID (SRC-001 to SRC-109) referenced in all product files |
 | `description` | What the page covers |
 | `platform_scope` | Which product(s) the source applies to |
 | `url` | Direct URL to Cisco's release notes or documentation page |
 | `last_verified` | Date this source was last checked |
 
-**99 sources** covering all product files. Each product's `source_ids` field links directly to the pages needed for version refresh.
+**110 sources** (SRC-001 to SRC-109) covering all product files. Each product's `source_ids` field links directly to the pages needed for version refresh.
 
 ---
 
@@ -344,6 +378,6 @@ Recommended check frequency: **quarterly** — Cisco ships major releases every 
 
 ## Data Currency
 
-Versions verified against live Cisco.com: **28 May 2026**
+Versions verified against live Cisco.com: **28 May 2026** · Legacy product EOL dates sourced from Cisco EoL notices.
 
 All source URLs are canonical Cisco.com or Meraki documentation pages — they remain stable even as new software versions are released.

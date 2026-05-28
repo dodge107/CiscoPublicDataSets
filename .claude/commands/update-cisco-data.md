@@ -185,6 +185,9 @@ Wait for all agents to complete. Then for each product row where the agent found
 
 **Do not change any field that the agent did not find updated data for.**
 
+**Note on product IDs:**
+All product IDs use a uniform `XXX-NNN` format (3-letter domain prefix + 3-digit zero-padded sequence). IDs are globally unique across all files and appear unchanged in `cisco_all_products.csv`. When adding new rows, continue from the last NNN in the relevant file. Current ranges are documented in CLAUDE.md.
+
 ---
 
 ### Step 4 — Update data/cisco_sources.csv
@@ -198,12 +201,41 @@ For any new source URLs needed by new products:
 
 ---
 
-### Step 5 — Update README.md
+### Step 5 — Regenerate cisco_all_products.csv
+
+After updating individual product CSVs, regenerate the combined all-in-one file using Python (do NOT use shell pipes — they risk RTK output injection):
+
+```python
+import csv, os
+files = [
+    'cisco_campus_switching.csv','cisco_dc_switching.csv','cisco_enterprise_routing.csv',
+    'cisco_sp_routing.csv','cisco_wireless.csv','cisco_security.csv','cisco_sdwan.csv',
+    'cisco_software.csv','cisco_sp_extended.csv','cisco_collaboration.csv','cisco_meraki.csv',
+    'cisco_dc_compute.csv','cisco_security_extended.csv','cisco_industrial.csv','cisco_sp_mobile.csv'
+]
+os.chdir('/Users/roy/AIProjects/CiscoPublicDataSets/data')
+header, rows = None, []
+for f in files:
+    with open(f, newline='', encoding='utf-8') as fh:
+        file_rows = list(csv.reader(fh))
+        if header is None:
+            header = file_rows[0]
+        rows.extend(file_rows[1:])
+with open('cisco_all_products.csv', 'w', newline='', encoding='utf-8') as out:
+    w = csv.writer(out)
+    w.writerow(header)
+    w.writerows(rows)
+```
+
+---
+
+### Step 6 — Update README.md and CLAUDE.md
 
 Recount rows per file using the updated CSVs and update:
-1. The file table (Rows column)
-2. The total product entries count
-3. The "Data Currency" date at the bottom
+1. The file table in README.md (Rows column) — including the cisco_all_products.csv total row
+2. The total product entries count in README.md
+3. The "Data Currency" date at the bottom of README.md
+4. The "Current Range" column in CLAUDE.md's file table if any range endpoints changed
 
 Do not rewrite any other section of the README unless a new OS type was added.
 
@@ -218,3 +250,4 @@ Do not rewrite any other section of the README unless a new OS type was added.
 - **Always stamp `last_updated`** (today's date) on every product row you modify or add. Leave it unchanged on unmodified rows.
 - **Preserve all existing notes** — append to them rather than replacing.
 - **SaaS / continuous-delivery products** (ThousandEyes, Umbrella, Duo, Meraki Dashboard, Webex Calling, XDR): `latest_version` and `gold_version` should both be `Continuous delivery (SaaS)` unless Cisco publishes discrete version numbers.
+- **Always regenerate cisco_all_products.csv** (Step 5) after any product CSV changes. Use the Python script — never shell pipes.

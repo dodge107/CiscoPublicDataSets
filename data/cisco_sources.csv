@@ -98,3 +98,13 @@ SRC-096,Cisco Ultra Packet Core StarOS Release Notes,ASR 5500 / 5700 / VPC StarO
 SRC-097,Cisco Ultra Cloud Core 5G SA Documentation,Ultra Cloud Core AMF / SMF / UPF / PCF,https://www.cisco.com/c/en/us/support/wireless/ultra-cloud-core-subscriber-microservices-infrastructure/series.html,2026-05-28
 SRC-098,Cisco BroadWorks Release Notes List,Cisco BroadWorks,https://www.cisco.com/c/en/us/support/unified-communications/broadworks/products-release-notes-list.html,2026-05-28
 SRC-099,Cisco IoT Control Center and NFVI Documentation,Cisco IoT Control Center / Cisco VIM / NFVI,https://www.cisco.com/c/en/us/solutions/service-provider/network-functions-virtualization-nfv/index.html,2026-05-28
+SRC-100,Cisco Catalyst 6500 Series EoL and Software Release Notes,Catalyst 6500,https://www.cisco.com/c/en/us/products/switches/catalyst-6500-series-switches/eos-eol-notice-listing.html,2026-05-28
+SRC-101,Cisco Catalyst 6800 Series Product Page and EoL Notices,Catalyst 6800,https://www.cisco.com/c/en/us/products/switches/catalyst-6800-series-switches/eos-eol-notice-listing.html,2026-05-28
+SRC-102,Cisco Catalyst 4500 / 4500-E / 4500-X EoL Notices and Release Notes,Catalyst 4500 / 4500-E / 4500-X,https://www.cisco.com/c/en/us/products/switches/catalyst-4500-series-switches/eos-eol-notice-listing.html,2026-05-28
+SRC-103,Cisco Catalyst 3750-X / 3750-G EoL Notices and IOS Release Notes,Catalyst 3750-X / 3750-G,https://www.cisco.com/c/en/us/products/switches/catalyst-3750-series-switches/eos-eol-notice-listing.html,2026-05-28
+SRC-104,Cisco Wireless LAN Controller 5500 / 8500 Series EoL Notices,WLC 5500 / 8500,https://www.cisco.com/c/en/us/products/wireless/wireless-lan-controller/eos-eol-notice-listing.html,2026-05-28
+SRC-105,Cisco Aironet Legacy AP (1700/2700/3600/3700) EoL Notices,Aironet 1700 / 2700 / 3600 / 3700,https://www.cisco.com/c/en/us/products/wireless/aironet-access-points/eos-eol-notice-listing.html,2026-05-28
+SRC-106,Cisco ASA 5500 (original) Series EoL Notices,ASA 5505 / 5510 / 5520 / 5540 / 5550,https://www.cisco.com/c/en/us/products/security/asa-5500-series-next-generation-firewalls/eos-eol-notice-listing.html,2026-05-28
+SRC-107,Cisco ISR G2 2900 / 3900 Series EoL Notices and IOS Release Notes,ISR 2900 / 3900,https://www.cisco.com/c/en/us/products/routers/4000-series-integrated-services-routers-isr/eos-eol-notice-listing.html,2026-05-28
+SRC-108,Cisco CRS Carrier Routing System EoL Notices,CRS-1 / CRS-3,https://www.cisco.com/c/en/us/products/routers/carrier-routing-system/eos-eol-notice-listing.html,2026-05-28
+SRC-109,Cisco ME 3600X / ME 3800X Metro Ethernet EoL Notices,ME 3600X / ME 3800X,https://www.cisco.com/c/en/us/products/switches/me-3600x-24ts-m-switch/eos-eol-notice-listing.html,2026-05-28
