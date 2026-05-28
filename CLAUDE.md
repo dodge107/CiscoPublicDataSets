@@ -9,7 +9,13 @@ All CSV files live in the `data/` subdirectory.
 
 | File | Product Domain | ID Prefix |
 |---|---|---|
-| `data/cisco_products.csv` | Core networking (campus switching, DC switching, routing, wireless, security, SD-WAN) | P001– |
+| `data/cisco_campus_switching.csv` | Campus switching (Catalyst 9200/9300/9400/9500/9600, 3850/3650/2960-X, 1000/1300) | P001– |
+| `data/cisco_dc_switching.csv` | DC switching (Nexus 9300/9500/7000/5500/3000/3500/2000 FEX) | P011– |
+| `data/cisco_enterprise_routing.csv` | Enterprise routing (ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR/C8000V) | P018– |
+| `data/cisco_sp_routing.csv` | SP routing core (ASR 9000, NCS 5500/540/560/5000/1000, Cisco 8000) | P025– |
+| `data/cisco_wireless.csv` | Wireless (Catalyst 9800 WLCs, 9100 APs Wi-Fi 6/6E/7, Aironet legacy) | P031– |
+| `data/cisco_security.csv` | Firewalls (Secure Firewall ASA 5500-X/5585-X/ASAv, FTD 1000/2100/3100/4100/4200, FPR 9300) | P038– |
+| `data/cisco_sdwan.csv` | SD-WAN (Catalyst SD-WAN vEdge, cEdge, Controllers) | P047– |
 | `data/cisco_software.csv` | Management & software platforms (Catalyst Center, ISE, NSO, ThousandEyes, etc.) | S001– |
 | `data/cisco_sp_extended.csv` | SP routing extended (ASR 920/901, NCS 2000/4000, XRv 9000, BNG) | SP001– |
 | `data/cisco_collaboration.csv` | UC & Collaboration (CUCM, Unity, Expressway, IP Phones, Webex devices) | C001– |

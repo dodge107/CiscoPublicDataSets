@@ -6,8 +6,8 @@ Update the Cisco product datasets with the latest software versions, gold (TAC-r
 
 `$ARGUMENTS` can be:
 - empty / `all` — update every product file
-- a file stem, e.g. `products`, `meraki`, `collaboration`, `dc_compute`, `security_extended`, `industrial`, `sp_mobile`, `sp_extended`, `software`
-- a category keyword, e.g. `switching`, `routing`, `wireless`, `security`, `meraki`, `collab`, `sp`, `industrial`, `compute`
+- a file stem, e.g. `campus_switching`, `dc_switching`, `enterprise_routing`, `sp_routing`, `wireless`, `security`, `sdwan`, `meraki`, `collaboration`, `dc_compute`, `security_extended`, `industrial`, `sp_mobile`, `sp_extended`, `software`
+- a category keyword, e.g. `switching`, `routing`, `wireless`, `security`, `meraki`, `collab`, `sp`, `industrial`, `compute`, `sdwan`
 
 ## How to run this update
 
@@ -21,7 +21,13 @@ Read ALL product CSV files and `cisco_sources.csv` to understand what is current
 
 ```
 Files to read:
-  data/cisco_products.csv
+  data/cisco_campus_switching.csv
+  data/cisco_dc_switching.csv
+  data/cisco_enterprise_routing.csv
+  data/cisco_sp_routing.csv
+  data/cisco_wireless.csv
+  data/cisco_security.csv
+  data/cisco_sdwan.csv
   data/cisco_software.csv
   data/cisco_sp_extended.csv
   data/cisco_collaboration.csv

@@ -12,7 +12,13 @@ All CSV files live in the `data/` subdirectory.
 
 | File | Rows | Description |
 |---|---|---|
-| `data/cisco_products.csv` | 49 | Core networking — campus switching, DC switching, enterprise/SP routing, wireless, security, SD-WAN |
+| `data/cisco_campus_switching.csv` | 10 | Campus switching — Catalyst 9200/9300/9400/9500/9600, 3850/3650/2960-X, 1000/1300 |
+| `data/cisco_dc_switching.csv` | 7 | DC switching — Nexus 9300/9500/7000/7700, 5500/5600, 3000/3100, 3500, 2000 FEX |
+| `data/cisco_enterprise_routing.csv` | 7 | Enterprise routing — ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR/C8000V |
+| `data/cisco_sp_routing.csv` | 6 | SP routing — ASR 9000, NCS 5500, NCS 540/560, NCS 5000, Cisco 8000, NCS 1000 optical |
+| `data/cisco_wireless.csv` | 7 | Wireless — Catalyst 9800 WLCs (×4), 9100 APs (Wi-Fi 6/6E/7), Aironet legacy |
+| `data/cisco_security.csv` | 9 | Firewalls — ASA 5500-X/ASAv, Secure Firewall FTD 1000/2100/3100/4100/4200, FPR 9300 |
+| `data/cisco_sdwan.csv` | 3 | SD-WAN — Catalyst SD-WAN vEdge (EOL), cEdge, Controllers |
 | `data/cisco_software.csv` | 15 | Management and software platforms — Catalyst Center, ISE, NSO, ThousandEyes, Secure Client, XDR, Umbrella, Duo |
 | `data/cisco_sp_extended.csv` | 10 | Additional SP products — ASR 920/901, NCS 2000/4000/6000, XRv 9000, BNG |
 | `data/cisco_collaboration.csv` | 16 | Unified Communications and Collaboration — CUCM, Unity Connection, Expressway, IP Phones, Webex devices |
@@ -49,20 +55,59 @@ All product CSV files use identical columns:
 
 ---
 
-## cisco_products.csv — Core Networking
+## cisco_campus_switching.csv — Campus Switching
 
-| Category | Count | Families |
-|---|---|---|
-| Campus Switching | 10 | Catalyst 9200, 9300, 9400, 9500, 9600, 3850, 3650, 2960-X, 1000, 1300 |
-| Security | 9 | ASA 5500-X, ASAv, Secure Firewall 1000/2100/3100/4100/4200, Firepower 9300 |
-| DC Switching | 7 | Nexus 9300, 9500, 7000/7700, 5500/5600, 3000/3100, 3500, 2000 FEX |
-| Enterprise Routing | 7 | ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR 1000V/C8000V |
-| Wireless | 7 | Catalyst 9800 WLC (×4), 9100 APs (Wi-Fi 6 + 6E/7), Aironet |
-| SP Routing | 5 | ASR 9000, NCS 5500, NCS 540/560, NCS 5000, Cisco 8000 |
-| SD-WAN | 3 | vEdge (EOL), cEdge (Catalyst 8000/ISR), SD-WAN Controllers |
-| Optical / SP Routing | 1 | NCS 1000 (DWDM/OTN) |
+Catalyst 9200, 9300, 9400, 9500, 9600 (IOS-XE 26.1.x / gold 17.15.5) · Catalyst 3850/3650 (EOL) · 2960-X (EOL) · 1000/1300 (SMB)
 
-EOL status: **38 Active · 9 EOL · 2 EOL-Pending**
+EOL status: **7 Active · 3 EOL**
+
+---
+
+## cisco_dc_switching.csv — DC Switching
+
+Nexus 9300/9500 (NX-OS 10.6(3)F) · Nexus 7000/7700 (EOL-Pending) · Nexus 5500/5600 (EOL) · Nexus 3000/3100/3200 · Nexus 3500 (EOL-Pending) · Nexus 2000 FEX
+
+EOL status: **4 Active · 1 EOL · 2 EOL-Pending**
+
+---
+
+## cisco_enterprise_routing.csv — Enterprise Routing
+
+ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR 1000V / Catalyst 8000V — all running IOS-XE 26.1.x / gold 17.15.x
+
+EOL status: **7 Active**
+
+---
+
+## cisco_sp_routing.csv — SP Routing
+
+ASR 9000, NCS 5500, NCS 540/560 — IOS-XR 26.1.1 (gold 25.4.2) · NCS 5000 (EOL) · Cisco 8000 (Silicon One, 400G/800G) · NCS 1000 (DWDM/OTN optical)
+
+EOL status: **5 Active · 1 EOL**
+
+---
+
+## cisco_wireless.csv — Wireless
+
+Catalyst 9800-40/80/L WLC + 9800-CL (virtual) · 9100 APs Wi-Fi 6 (9115/9120/9130) · 9100 APs Wi-Fi 6E/7 (9136/9162/9164/9166) · Aironet 4800/3800/2800 (EOL)
+
+EOL status: **6 Active · 1 EOL**
+
+---
+
+## cisco_security.csv — Firewalls
+
+Secure Firewall ASA 5500-X (EOL) · ASA 5585-X (EOL) · ASAv (Active, 9.24.x) · FTD 1000/2100/3100/4100/4200 · Firepower 9300 — FTD 10.0 (gold 7.6.4)
+
+EOL status: **7 Active · 2 EOL**
+
+---
+
+## cisco_sdwan.csv — SD-WAN
+
+Catalyst SD-WAN vEdge hardware (EOL — migrate to cEdge) · cEdge (Catalyst 8000 / ISR, IOS-XE SD-WAN 26.1.x) · SD-WAN Controllers (vManage/vSmart/vBond, 20.15.x)
+
+EOL status: **2 Active · 1 EOL**
 
 ---
 
