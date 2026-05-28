@@ -1,0 +1,100 @@
+source_id,description,platform_scope,url,last_verified
+SRC-001,Catalyst 9000 Switching Recommended Releases (TAC),Catalyst 9200/9300/9400/9500/9600,https://www.cisco.com/c/en/us/support/docs/switches/catalyst-9300-series-switches/214814-recommended-releases-for-catalyst-9200-9.html,2026-05-28
+SRC-002,Catalyst 9000 IOS XE 17 Release Notes Collection,Catalyst 9000 series,https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst-9000/collections/catalyst-9000-release-notes.html,2026-05-28
+SRC-003,Catalyst 9200 Series Release Notes List,Catalyst 9200,https://www.cisco.com/c/en/us/support/switches/catalyst-9200-series-switches/products-release-notes-list.html,2026-05-28
+SRC-004,Catalyst 9300 Series Release Notes List,Catalyst 9300,https://www.cisco.com/c/en/us/support/switches/catalyst-9300-series-switches/products-release-notes-list.html,2026-05-28
+SRC-005,Catalyst 9400 Series Release Notes List,Catalyst 9400,https://www.cisco.com/c/en/us/support/switches/catalyst-9400-series-switches/products-release-notes-list.html,2026-05-28
+SRC-006,Catalyst 9500 Series Release Notes List,Catalyst 9500,https://www.cisco.com/c/en/us/support/switches/catalyst-9500-series-switches/products-release-notes-list.html,2026-05-28
+SRC-007,Catalyst 9600 Series Release Notes List,Catalyst 9600,https://www.cisco.com/c/en/us/support/switches/catalyst-9600-series-switches/products-release-notes-list.html,2026-05-28
+SRC-008,Catalyst 3850 Series Release Notes List,Catalyst 3850,https://www.cisco.com/c/en/us/support/switches/catalyst-3850-series-switches/products-release-notes-list.html,2026-05-28
+SRC-009,Catalyst 3650 Series Release Notes List,Catalyst 3650,https://www.cisco.com/c/en/us/support/switches/catalyst-3650-series-switches/products-release-notes-list.html,2026-05-28
+SRC-010,Catalyst 2960-X Series Release Notes List,Catalyst 2960-X/XR,https://www.cisco.com/c/en/us/support/switches/catalyst-2960-x-series-switches/products-release-notes-list.html,2026-05-28
+SRC-011,Catalyst 1000 Series Release Notes List,Catalyst 1000,https://www.cisco.com/c/en/us/support/switches/catalyst-1000-series-switches/products-release-notes-list.html,2026-05-28
+SRC-012,Catalyst 1300 Series Release Notes List,Catalyst 1300,https://www.cisco.com/c/en/us/support/switches/catalyst-1300-series-switches/products-release-notes-list.html,2026-05-28
+SRC-013,Nexus 9000 Recommended NX-OS Releases,Nexus 9000,https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/recommended_release/b_Minimum_and_Recommended_Cisco_NX-OS_Releases_for_Cisco_Nexus_9000_Series_Switches.html,2026-05-28
+SRC-014,Nexus 9000 Series Release Notes List,Nexus 9000,https://www.cisco.com/c/en/us/support/switches/nexus-9000-series-switches/products-release-notes-list.html,2026-05-28
+SRC-015,Nexus 7000 Recommended NX-OS Releases,Nexus 7000/7700,https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/nx-os/recommended_releases/recommended_nx-os_releases.html,2026-05-28
+SRC-016,Nexus 7000 Series Release Notes List,Nexus 7000/7700,https://www.cisco.com/c/en/us/support/switches/nexus-7000-series-switches/products-release-notes-list.html,2026-05-28
+SRC-017,Nexus 3000 Recommended NX-OS Releases,Nexus 3000/3100/3500,https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus3000/sw/recommended_release/b_Minimum_and_Recommended_Cisco_NX-OS_Releases_for_Cisco_Nexus_3000_Series_Switches.html,2026-05-28
+SRC-018,Nexus 3000 Series Release Notes List,Nexus 3000/3100/3500,https://www.cisco.com/c/en/us/support/switches/nexus-3000-series-switches/products-release-notes-list.html,2026-05-28
+SRC-019,ISR 4000 Series Release Notes List,ISR 4000,https://www.cisco.com/c/en/us/support/routers/4000-series-integrated-services-routers-isr/products-release-notes-list.html,2026-05-28
+SRC-020,ISR 1000 Series Release Notes List,ISR 1000,https://www.cisco.com/c/en/us/support/routers/1000-series-integrated-services-routers-isr/products-release-notes-list.html,2026-05-28
+SRC-021,Catalyst 8000 Series Support Page,Catalyst 8200/8300/8500,https://www.cisco.com/c/en/us/support/routers/catalyst-8000-series-edge-platforms/series.html,2026-05-28
+SRC-022,ASR 1000 Series Release Notes List,ASR 1000,https://www.cisco.com/c/en/us/support/routers/asr-1000-series-aggregation-services-routers/products-release-notes-list.html,2026-05-28
+SRC-023,Enterprise Routing Recommended IOS-XE Releases (ASR1000/ISR4000/C8000),ISR 4000 / ASR 1000 / Catalyst 8000,https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-xe-16/215567-recommended-releases-for-asr1000-isr400.html,2026-05-28
+SRC-024,Cisco 8000 Series Routers Support Page,Cisco 8000 (IOS-XR),https://www.cisco.com/c/en/us/support/routers/8000-series-routers/series.html,2026-05-28
+SRC-025,ASR 9000 Series Release Notes List,ASR 9000,https://www.cisco.com/c/en/us/support/routers/asr-9000-series-aggregation-services-routers/products-release-notes-list.html,2026-05-28
+SRC-026,NCS 5500 Series Release Notes List,NCS 5500,https://www.cisco.com/c/en/us/support/routers/network-convergence-system-5500-series/products-release-notes-list.html,2026-05-28
+SRC-027,IOS XR Software Release Notes List (all IOS-XR platforms),ASR 9000 / NCS 5500 / Cisco 8000,https://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-xr-software/products-release-notes-list.html,2026-05-28
+SRC-028,Catalyst 9800 WLC Release Notes List,Catalyst 9800-40/80/L/CL,https://www.cisco.com/c/en/us/support/wireless/catalyst-9800-series-wireless-controllers/products-release-notes-list.html,2026-05-28
+SRC-029,Catalyst 9800 Recommended IOS-XE Releases (TAC),Catalyst 9800 WLC,https://www.cisco.com/c/en/us/support/docs/wireless/catalyst-9800-series-wireless-controllers/214749-tac-recommended-ios-xe-builds-for-wirele.html,2026-05-28
+SRC-030,Catalyst 9100 AP Release Notes List,Catalyst 9100 APs,https://www.cisco.com/c/en/us/support/wireless/catalyst-9100ax-series-access-points/products-release-notes-list.html,2026-05-28
+SRC-031,Aironet 4800 Series Release Notes List,Aironet 4800,https://www.cisco.com/c/en/us/support/wireless/aironet-4800-series-access-points/products-release-notes-list.html,2026-05-28
+SRC-032,Secure Firewall ASA Release Notes List,ASA 5500-X / ASAv,https://www.cisco.com/c/en/us/support/security/adaptive-security-appliance-asa-software/products-release-notes-list.html,2026-05-28
+SRC-033,Secure Firewall Threat Defense (FTD) Release Notes List,FTD all platforms,https://www.cisco.com/c/en/us/support/security/firepower-ngfw/products-release-notes-list.html,2026-05-28
+SRC-034,Secure Firewall 4100 Series Release Notes List,Firepower 4100,https://www.cisco.com/c/en/us/support/security/firepower-4100-series/products-release-notes-list.html,2026-05-28
+SRC-035,Firepower 9300 Series Release Notes List,Firepower 9300,https://www.cisco.com/c/en/us/support/security/firepower-9000-series/products-release-notes-list.html,2026-05-28
+SRC-036,Catalyst SD-WAN Release Notes List,SD-WAN all,https://www.cisco.com/c/en/us/support/routers/sd-wan/products-release-notes-list.html,2026-05-28
+SRC-037,Catalyst SD-WAN Recommended Software Versions (TAC),SD-WAN cEdge/vEdge/Controllers,https://www.cisco.com/c/en/us/support/docs/routers/sd-wan/215676-cisco-tac-and-bu-recommended-sd-wan-soft.html,2026-05-28
+SRC-038,SD-WAN vEdge Router Release Notes List,vEdge 100/1000/2000,https://www.cisco.com/c/en/us/support/routers/sd-wan-vedge-100-router/products-release-notes-list.html,2026-05-28
+SRC-039,NX-OS Software Recommended Releases (all platforms),NX-OS all platforms,https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/nx-os-software/220437-recommended-cisco-nx-os-releases.html,2026-05-28
+SRC-040,IOS XE Release Notes Note - Bi-Annual EMR shift from April 2026,IOS-XE all platforms,https://community.cisco.com/t5/networking-blogs/cisco-ios-xe-shifts-to-bi-annual-extended-releases-in-april-2026/ba-p/5543829,2026-05-28
+SRC-041,Cisco Catalyst Center Release Notes List,Catalyst Center,https://www.cisco.com/c/en/us/support/cloud-systems-management/dna-center/products-release-notes-list.html,2026-05-28
+SRC-042,Cisco Identity Services Engine Release Notes List,Cisco ISE,https://www.cisco.com/c/en/us/support/security/identity-services-engine/products-release-notes-list.html,2026-05-28
+SRC-043,Cisco Crosswork NSO Release Notes List,Cisco NSO,https://www.cisco.com/c/en/us/support/cloud-systems-management/network-services-orchestrator/products-release-notes-list.html,2026-05-28
+SRC-044,Cisco Crosswork Network Controller Support Page,Crosswork Network Controller,https://www.cisco.com/c/en/us/support/cloud-systems-management/crosswork-network-controller/model.html,2026-05-28
+SRC-045,Cisco Secure Network Analytics Release Notes List,Secure Network Analytics (Stealthwatch),https://www.cisco.com/c/en/us/support/security/stealthwatch/products-release-notes-list.html,2026-05-28
+SRC-046,Cisco ThousandEyes Documentation,ThousandEyes,https://docs.thousandeyes.com,2026-05-28
+SRC-047,Cisco Secure Client Release Notes List,Cisco Secure Client (AnyConnect),https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client/products-release-notes-list.html,2026-05-28
+SRC-048,Cisco Security SaaS Products (Umbrella / Duo / AppDynamics),Umbrella / Duo / AppDynamics,https://www.cisco.com/c/en/us/products/security/index.html,2026-05-28
+SRC-049,Cisco Intersight Release Notes,Cisco Intersight,https://intersight.com/help/saashelp/resources/cisco_intersight_release_notes,2026-05-28
+SRC-050,Cisco Secure Workload Release Notes,Cisco Secure Workload (Tetration),https://www.cisco.com/c/en/us/support/security/tetration-analytics/products-release-notes-list.html,2026-05-28
+SRC-051,Cisco ASR 920 Series Release Notes List,ASR 920,https://www.cisco.com/c/en/us/support/routers/asr-920-series-aggregation-services-router/products-release-notes-list.html,2026-05-28
+SRC-052,Cisco ASR 901 Series Release Notes List,ASR 901/901S,https://www.cisco.com/c/en/us/support/routers/asr-901-series-aggregation-services-routers/products-release-notes-list.html,2026-05-28
+SRC-053,Cisco NCS 2000 Series Support Page,NCS 2000,https://www.cisco.com/c/en/us/support/optical-networking/network-convergence-system-2000-series/series.html,2026-05-28
+SRC-054,Cisco NCS 4000 Series Release Notes List,NCS 4000,https://www.cisco.com/c/en/us/support/optical-networking/network-convergence-system-4000-series/products-release-notes-list.html,2026-05-28
+SRC-055,Cisco CUCM (Unified Communications Manager) Release Notes List,CUCM,https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/products-release-notes-list.html,2026-05-28
+SRC-056,Cisco Unity Connection Release Notes List,Cisco Unity Connection,https://www.cisco.com/c/en/us/support/unified-communications/unity-connection/products-release-notes-list.html,2026-05-28
+SRC-057,Cisco Expressway Series Release Notes List,Cisco Expressway,https://www.cisco.com/c/en/us/support/unified-communications/expressway-series/products-release-notes-list.html,2026-05-28
+SRC-058,Cisco Meeting Server Release Notes List,Cisco Meeting Server,https://www.cisco.com/c/en/us/support/conferencing/meeting-server/products-release-notes-list.html,2026-05-28
+SRC-059,Cisco IP Phone 7800 Series Release Notes List,IP Phone 7800,https://www.cisco.com/c/en/us/support/collaboration-endpoints/unified-ip-phone-7800-series/products-release-notes-list.html,2026-05-28
+SRC-060,Cisco IP Phone 8800 Series Release Notes List,IP Phone 8800,https://www.cisco.com/c/en/us/support/collaboration-endpoints/unified-ip-phone-8800-series/products-release-notes-list.html,2026-05-28
+SRC-061,Cisco IP Phone 6800 Series Release Notes List,IP Phone 6800,https://www.cisco.com/c/en/us/support/collaboration-endpoints/unified-ip-phone-6800-series/products-release-notes-list.html,2026-05-28
+SRC-062,RoomOS Release Notes (Webex Devices — Room/Desk/Board),RoomOS (all Webex devices),https://collaborationhelp.cisco.com/article/en-us/nx3gh4,2026-05-28
+SRC-063,Cisco Webex Calling Help and Documentation,Webex Calling,https://help.webex.com/en-us/landing/ld-7iqq5r-CiscoWebexCalling,2026-05-28
+SRC-064,Cisco Meraki Firmware Upgrades Feed (Community),Meraki all products,https://community.cisco.com/t5/meraki-firmware-upgrades-feed/bg-p/networking-firmwareupgrades,2026-05-28
+SRC-065,Cisco Meraki MX Release Notes,Meraki MX / Z Series,https://documentation.meraki.com/MX/MX_Overview_and_Specifications/MX_Firmware_Changelog,2026-05-28
+SRC-066,Cisco Meraki MS Release Notes,Meraki MS Switches,https://documentation.meraki.com/MS/MS_Overview_and_Specifications/MS_Firmware_Changelog,2026-05-28
+SRC-067,Cisco Meraki MR Release Notes,Meraki MR APs,https://documentation.meraki.com/MR/MR_Overview_and_Specifications/MR_Firmware_Changelog,2026-05-28
+SRC-068,Cisco Meraki MV Release Notes,Meraki MV Cameras,https://documentation.meraki.com/MV/MV_Overview_and_Specifications/MV_Firmware_Changelog,2026-05-28
+SRC-069,Cisco Meraki MT Documentation,Meraki MT Sensors,https://documentation.meraki.com/MT,2026-05-28
+SRC-070,Cisco Meraki MG Release Notes,Meraki MG Cellular,https://documentation.meraki.com/MG/MG_Overview_and_Specifications/MG_Firmware_Changelog,2026-05-28
+SRC-071,Cisco APIC Release Notes List,Cisco APIC / ACI,https://www.cisco.com/c/en/us/support/cloud-systems-management/application-policy-infrastructure-controller-apic/tsd-products-support-series-home.html,2026-05-28
+SRC-072,Recommended Cisco APIC and Nexus 9000 ACI-Mode Releases,Cisco ACI / APIC / Nexus 9000 ACI,https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/recommended-release/b_Recommended_Cisco_ACI_Releases.html,2026-05-28
+SRC-073,Cisco MDS 9000 NX-OS Release Notes List,Cisco MDS 9000 SAN,https://www.cisco.com/c/en/us/support/storage-networking/mds-9000-nx-os-san-os-software/products-release-notes-list.html,2026-05-28
+SRC-074,Recommended Releases for Cisco MDS 9000 Series Switches,Cisco MDS 9000 SAN,https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/sw/b_MDS_NX-OS_Recommended_Releases.html,2026-05-28
+SRC-075,Cisco UCS Manager Release Notes List,UCS B-Series / C-Series / X-Series / Fabric Interconnects,https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-manager/products-release-notes-list.html,2026-05-28
+SRC-076,Cisco Intersight Release Notes,UCS X-Series / C-Series (Intersight-managed),https://intersight.com/help/saashelp/resources/cisco_intersight_release_notes,2026-05-28
+SRC-077,Cisco HyperFlex HX Data Platform Release Notes,Cisco HyperFlex,https://www.cisco.com/c/en/us/support/hyperconverged-systems/hyperflex-hx-data-platform-software/products-release-notes-list.html,2026-05-28
+SRC-078,Cisco Secure Email Gateway Release Notes List,Cisco Secure Email Gateway (ESA),https://www.cisco.com/c/en/us/support/security/email-security-appliance/products-release-notes-list.html,2026-05-28
+SRC-079,Cisco Secure Email Virtual Gateway Release Notes List,Cisco Secure Email Virtual Gateway,https://www.cisco.com/c/en/us/support/security/email-security-virtual-appliance/products-release-notes-list.html,2026-05-28
+SRC-080,Cisco Secure Web Appliance Release Notes List,Cisco Secure Web Appliance (WSA),https://www.cisco.com/c/en/us/support/security/web-security-appliance/products-release-notes-list.html,2026-05-28
+SRC-081,Cisco Secure Email and Web Manager Release Notes List,Cisco Secure Email and Web Manager (SMA),https://www.cisco.com/c/en/us/support/security/content-security-management-appliance/products-release-notes-list.html,2026-05-28
+SRC-082,Cisco Secure Endpoint Release Notes List,Cisco Secure Endpoint (AMP for Endpoints),https://www.cisco.com/c/en/us/support/security/fireamp-endpoints/products-release-notes-list.html,2026-05-28
+SRC-083,Cisco XDR Release Notes,Cisco XDR / Multicloud Defense,https://docs.xdr.security.cisco.com/Content/release-notes.htm,2026-05-28
+SRC-084,Cisco Secure Access Documentation,Cisco Secure Access (SASE/SSE),https://www.cisco.com/c/en/us/support/security/secure-access/series.html,2026-05-28
+SRC-085,Cisco ISA 3000 Release Notes List,Cisco ISA 3000 Industrial Security Appliance,https://www.cisco.com/c/en/us/support/security/industrial-security-appliance-isa/products-release-notes-list.html,2026-05-28
+SRC-086,Cisco Cyber Vision Release Notes,Cisco Cyber Vision,https://www.cisco.com/c/en/us/support/security/cyber-vision/products-release-notes-list.html,2026-05-28
+SRC-087,Cisco Secure Firewall Management Center Release Notes List,Cisco FMC / FMCv,https://www.cisco.com/c/en/us/support/security/defense-center/products-release-notes-list.html,2026-05-28
+SRC-088,Cisco Catalyst IE3x00 Rugged Series Release Notes List,IE3100 / IE3200 / IE3300 / IE3400,https://www.cisco.com/c/en/us/support/switches/catalyst-ie3400-rugged-series/products-release-notes-list.html,2026-05-28
+SRC-089,Cisco Catalyst IE3400 Heavy Duty Series Release Notes,IE3400H,https://www.cisco.com/c/en/us/support/switches/catalyst-ie3400-heavy-duty-series/series.html,2026-05-28
+SRC-090,Cisco Catalyst IE9300 Series Release Notes,IE9300 / IE9310 / IE9320,https://www.cisco.com/c/en/us/support/switches/catalyst-ie9300-rugged-series/products-release-notes-list.html,2026-05-28
+SRC-091,Cisco Catalyst IR1800 Rugged Series Release Notes List,IR1101 / IR1800 / IR8140 / IR8340,https://www.cisco.com/c/en/us/support/routers/catalyst-ir1800-rugged-series-routers/products-release-notes-list.html,2026-05-28
+SRC-092,Cisco Catalyst IR1100 Rugged Series Support Page,IR1101,https://www.cisco.com/c/en/us/support/routers/1100-series-industrial-integrated-services-routers/series.html,2026-05-28
+SRC-093,Cisco Industrial Wireless (IW6300 / IW9165 / IW9167) Support Pages,IW6300 / IW9165 / IW9167,https://www.cisco.com/c/en/us/support/wireless/catalyst-iw9167-series-access-points/series.html,2026-05-28
+SRC-094,Cisco IoT Operations Dashboard and IC3000 Documentation,Cisco IoT OD / IC3000 / Cyber Vision,https://www.cisco.com/c/en/us/solutions/internet-of-things/iot-operations-dashboard.html,2026-05-28
+SRC-095,Cisco ASR 5000 Series Release Notes / Configuration Guides,ASR 5000 / 5500 / 5700,https://www.cisco.com/c/en/us/support/wireless/asr-5000-series/series.html,2026-05-28
+SRC-096,Cisco Ultra Packet Core StarOS Release Notes,ASR 5500 / 5700 / VPC StarOS,https://www.cisco.com/c/en/us/td/docs/wireless/asr_5000/2026-01/RelNotes-StarOS-2026_01_ga0.html,2026-05-28
+SRC-097,Cisco Ultra Cloud Core 5G SA Documentation,Ultra Cloud Core AMF / SMF / UPF / PCF,https://www.cisco.com/c/en/us/support/wireless/ultra-cloud-core-subscriber-microservices-infrastructure/series.html,2026-05-28
+SRC-098,Cisco BroadWorks Release Notes List,Cisco BroadWorks,https://www.cisco.com/c/en/us/support/unified-communications/broadworks/products-release-notes-list.html,2026-05-28
+SRC-099,Cisco IoT Control Center and NFVI Documentation,Cisco IoT Control Center / Cisco VIM / NFVI,https://www.cisco.com/c/en/us/solutions/service-provider/network-functions-virtualization-nfv/index.html,2026-05-28
