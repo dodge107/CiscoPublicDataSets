@@ -63,12 +63,12 @@ SRC-061,Cisco IP Phone 6800 Series Release Notes List,IP Phone 6800,https://www.
 SRC-062,RoomOS Release Notes (Webex Devices — Room/Desk/Board),RoomOS (all Webex devices),https://collaborationhelp.cisco.com/article/en-us/nx3gh4,2026-05-28
 SRC-063,Cisco Webex Calling Help and Documentation,Webex Calling,https://help.webex.com/en-us/landing/ld-7iqq5r-CiscoWebexCalling,2026-05-28
 SRC-064,Cisco Meraki Firmware Upgrades Feed (Community),Meraki all products,https://community.cisco.com/t5/meraki-firmware-upgrades-feed/bg-p/networking-firmwareupgrades,2026-05-28
-SRC-065,Cisco Meraki MX Release Notes,Meraki MX / Z Series,https://documentation.meraki.com/MX/MX_Overview_and_Specifications/MX_Firmware_Changelog,2026-05-28
-SRC-066,Cisco Meraki MS Release Notes,Meraki MS Switches,https://documentation.meraki.com/MS/MS_Overview_and_Specifications/MS_Firmware_Changelog,2026-05-28
-SRC-067,Cisco Meraki MR Release Notes,Meraki MR APs,https://documentation.meraki.com/MR/MR_Overview_and_Specifications/MR_Firmware_Changelog,2026-05-28
-SRC-068,Cisco Meraki MV Release Notes,Meraki MV Cameras,https://documentation.meraki.com/MV/MV_Overview_and_Specifications/MV_Firmware_Changelog,2026-05-28
-SRC-069,Cisco Meraki MT Documentation,Meraki MT Sensors,https://documentation.meraki.com/MT,2026-05-28
-SRC-070,Cisco Meraki MG Release Notes,Meraki MG Cellular,https://documentation.meraki.com/MG/MG_Overview_and_Specifications/MG_Firmware_Changelog,2026-05-28
+SRC-065,Cisco Meraki MX / Z Firmware Features Directory,Meraki MX / Z Series,https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/Security_and_SD-WAN_%28MX%2CZ%29_Features_Directory,2026-09-29
+SRC-066,Cisco Meraki MS / CS Firmware Features Directory,Meraki MS Switches,https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/MS_Firmware_Features_Directory,2026-09-29
+SRC-067,Cisco Meraki MR Firmware Features Directory,Meraki MR APs,https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/Wireless_(MR)_Firmware_Features_Directory,2026-09-29
+SRC-068,Cisco Meraki MV Firmware Updates,Meraki MV Cameras,https://documentation.meraki.com/IoT/MV_-_Smart_Cameras/Product_Information/Compatibility_and_Firmware/Firmware_Updates_on_MV_Smart_Cameras,2026-09-29
+SRC-069,Cisco Meraki MT Documentation,Meraki MT Sensors,https://documentation.meraki.com/IoT/MT_-_Sensors,2026-09-29
+SRC-070,Cisco Meraki MG Cellular Gateway Firmware Features Directory,Meraki MG Cellular,https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/Cellular_Gateway_(MG)_Firmware_Features_Directory,2026-09-29
 SRC-071,Cisco APIC Release Notes List,Cisco APIC / ACI,https://www.cisco.com/c/en/us/support/cloud-systems-management/application-policy-infrastructure-controller-apic/tsd-products-support-series-home.html,2026-05-28
 SRC-072,Recommended Cisco APIC and Nexus 9000 ACI-Mode Releases,Cisco ACI / APIC / Nexus 9000 ACI,https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/recommended-release/b_Recommended_Cisco_ACI_Releases.html,2026-05-28
 SRC-073,Cisco MDS 9000 NX-OS Release Notes List,Cisco MDS 9000 SAN,https://www.cisco.com/c/en/us/support/storage-networking/mds-9000-nx-os-san-os-software/products-release-notes-list.html,2026-05-28

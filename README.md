@@ -10,27 +10,31 @@ A reference dataset of Cisco networking products for use in AI/ML projects, chat
 
 All CSV files live in the `data/` subdirectory.
 
-| File | Rows | Description |
-|---|---|---|
-| `data/cisco_campus_switching.csv` | 14 | Campus switching — Catalyst 9200/9300/9400/9500/9600, 3850/3650/2960-X, 1000/1300, **6500/6800/4500/3750-X (legacy EOL)** |
-| `data/cisco_dc_switching.csv` | 7 | DC switching — Nexus 9300/9500/7000/7700, 5500/5600, 3000/3100, 3500, 2000 FEX |
-| `data/cisco_enterprise_routing.csv` | 9 | Enterprise routing — ISR 4000/1000, Catalyst 8200/8300/8500, ASR 1000, CSR/C8000V, **ISR G2 2900/3900 (legacy EOL)** |
-| `data/cisco_sp_routing.csv` | 6 | SP routing — ASR 9000, NCS 5500, NCS 540/560, NCS 5000, Cisco 8000, NCS 1000 optical |
-| `data/cisco_wireless.csv` | 10 | Wireless — Catalyst 9800 WLCs (×4), 9100 APs (Wi-Fi 6/6E/7), Aironet legacy, **WLC 5500/8500, Aironet 3700/3600/2700/1700 (legacy EOL)** |
-| `data/cisco_security.csv` | 10 | Firewalls — ASA 5500-X/ASAv, Secure Firewall FTD 1000/2100/3100/4100/4200, FPR 9300, **ASA 5500 original (legacy EOL)** |
-| `data/cisco_sdwan.csv` | 3 | SD-WAN — Catalyst SD-WAN vEdge (EOL), cEdge, Controllers |
-| `data/cisco_software.csv` | 15 | Management and software platforms — Catalyst Center, ISE, NSO, ThousandEyes, Secure Client, XDR, Umbrella, Duo |
-| `data/cisco_sp_extended.csv` | 12 | Additional SP products — ASR 920/901, NCS 2000/4000/6000, XRv 9000, BNG, **CRS-1/3, ME 3600X/3800X (legacy EOL)** |
-| `data/cisco_collaboration.csv` | 11 | Unified Communications and Collaboration — CUCM, Unity Connection, Expressway, IP Phones, Webex devices |
-| `data/cisco_meraki.csv` | 15 | Meraki cloud-managed products — MX, MS, MR, MV, MT, MG, Z series |
-| `data/cisco_dc_compute.csv` | 15 | DC compute and ACI — APIC, ACI, MDS SAN, UCS B/C/X-Series, Fabric Interconnects, HyperFlex |
-| `data/cisco_security_extended.csv` | 12 | Extended security portfolio — Secure Email, Secure Web, Secure Endpoint, XDR, Secure Access SASE, Cyber Vision, FMC |
-| `data/cisco_industrial.csv` | 14 | Industrial networking / IoT — IE switches, IR routers, IW APs, Cyber Vision, IoT OD |
-| `data/cisco_sp_mobile.csv` | 11 | SP mobile core — ASR 5000/5500/5700, Ultra Packet Core, 5G SA (AMF/SMF/UPF/PCF), BroadWorks, IoT Control Center |
-| `data/cisco_all_products.csv` | 164 | **Combined all-in-one dataset** — all product files merged into a single CSV (same schema, auto-generated) |
-| `data/cisco_sources.csv` | 110 | Source URLs (SRC-001 to SRC-109) for refreshing version data |
+<!-- AUTO-GENERATED:FILE-TABLE:BEGIN -->
+
+| File | Rows | ID Prefix | Description |
+|---|---:|---|---|
+| `data/cisco_campus_switching.csv` | 14 | CSW | Campus Switching |
+| `data/cisco_dc_switching.csv` | 7 | DCW | DC Switching |
+| `data/cisco_enterprise_routing.csv` | 9 | ERT | Enterprise Routing |
+| `data/cisco_sp_routing.csv` | 6 | SPR | SP Routing |
+| `data/cisco_wireless.csv` | 10 | WLS | Wireless |
+| `data/cisco_security.csv` | 10 | FWL | Firewalls |
+| `data/cisco_sdwan.csv` | 3 | SDW | SD-WAN |
+| `data/cisco_software.csv` | 15 | SFT | Management & Software |
+| `data/cisco_sp_extended.csv` | 12 | SPX | SP Extended |
+| `data/cisco_collaboration.csv` | 11 | CLB | Collaboration |
+| `data/cisco_meraki.csv` | 15 | MRK | Meraki |
+| `data/cisco_dc_compute.csv` | 15 | DCC | DC & Compute |
+| `data/cisco_security_extended.csv` | 12 | SES | Security Extended |
+| `data/cisco_industrial.csv` | 14 | IND | Industrial / IoT |
+| `data/cisco_sp_mobile.csv` | 11 | SPM | SP Mobile |
+| `data/cisco_all_products.csv` | 164 | — | **Combined all-in-one** (generated) |
+| `data/cisco_sources.csv` | 109 | SRC | Source URL registry |
 
 **Total product entries: 164**
+
+<!-- AUTO-GENERATED:FILE-TABLE:END -->
 
 ---
 
@@ -76,7 +80,9 @@ All product IDs use a uniform `XXX-NNN` format — 3-letter domain code + 3-digi
 
 ---
 
-## cisco_campus_switching.csv — Campus Switching
+<!-- AUTO-GENERATED:DATA-TABLES:BEGIN -->
+
+### Campus Switching — `cisco_campus_switching.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
@@ -95,11 +101,9 @@ All product IDs use a uniform `XXX-NNN` format — 3-letter domain code + 3-digi
 | CSW-013 | Catalyst 4500 / 4500-E / 4500-X | Distribution / Access (modular and fixed) | 3.11.7E (16.12.7) | EOL |
 | CSW-014 | Catalyst 3750-X / 3750-G | Access / Distribution (stackable legacy) | 15.2(4)E10 | EOL |
 
-EOL status: **7 Active** · 7 EOL
+EOL status: **7 Active · 7 EOL**
 
----
-
-## cisco_dc_switching.csv — DC Switching
+### DC Switching — `cisco_dc_switching.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
@@ -111,11 +115,9 @@ EOL status: **7 Active** · 7 EOL
 | DCW-006 | Nexus 3500 | Data Center ToR (ultra-low latency) | 7.0(3)I7.x | EOL-Pending |
 | DCW-007 | Nexus 2000 FEX | Data Center Server Access (Fabric Extender) | Inherits parent switch NX-OS | Active |
 
-EOL status: **4 Active** · 2 EOL-Pending · 1 EOL
+EOL status: **4 Active · 2 EOL-Pending · 1 EOL**
 
----
-
-## cisco_enterprise_routing.csv — Enterprise Routing
+### Enterprise Routing — `cisco_enterprise_routing.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
@@ -129,11 +131,9 @@ EOL status: **4 Active** · 2 EOL-Pending · 1 EOL
 | ERT-008 | ISR G2 2900 Series | Branch / WAN Edge Router (legacy) | 15.9(3)M10 | EOL |
 | ERT-009 | ISR G2 3900 Series | WAN Aggregation / Branch Router (legacy) | 15.9(3)M10 | EOL |
 
-EOL status: **7 Active** · 2 EOL
+EOL status: **7 Active · 2 EOL**
 
----
-
-## cisco_sp_routing.csv — SP Routing
+### SP Routing — `cisco_sp_routing.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
@@ -144,11 +144,9 @@ EOL status: **7 Active** · 2 EOL
 | SPR-005 | Cisco 8000 Series | Hyperscale / SP Core (next-gen) | 26.1.1 | Active |
 | SPR-006 | NCS 1000 (Optical) | SP DWDM / Optical Transport | 7.11.x | Active |
 
-EOL status: **5 Active** · 1 EOL
+EOL status: **5 Active · 1 EOL**
 
----
-
-## cisco_wireless.csv — Wireless
+### Wireless — `cisco_wireless.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
@@ -158,20 +156,18 @@ EOL status: **5 Active** · 1 EOL
 | WLS-004 | Catalyst 9800-CL WLC (virtual) | Virtual WLC (cloud / on-prem VM) | 17.15.5 | Active |
 | WLS-005 | Catalyst 9100 APs (Wi-Fi 6) | Wi-Fi 6 (802.11ax) Access Points | Tracks 9800 WLC IOS-XE version | Active |
 | WLS-006 | Catalyst 9100 APs (Wi-Fi 6E / Wi-Fi 7) | Wi-Fi 6E / Wi-Fi 7 (802.11be) Access Points | Tracks 9800 WLC IOS-XE version | Active |
-| WLS-007 | Aironet 4800 / 3800 / 2800 | Wi-Fi 5 Wave 2 APs (legacy) | 8.10.x (AireOS) | EOL |
+| WLS-007 | Aironet 4800 / 3800 / 2800 | Wi-Fi 5 (802.11ac Wave 2) APs (legacy) | 8.10.x (AireOS) | EOL |
 | WLS-008 | Cisco WLC 5500 | Campus Wireless LAN Controller (legacy) | 8.10.190.0 | EOL |
 | WLS-009 | Cisco WLC 8500 | Large Campus / SP Wireless LAN Controller (legacy) | 8.10.190.0 | EOL |
-| WLS-010 | Aironet 3700 / 3600 / 2700 / 1700 | Wi-Fi 4 / Wi-Fi 5 Wave 1 APs (legacy) | 8.5.182.0 | EOL |
+| WLS-010 | Aironet 3700 / 3600 / 2700 / 1700 | Wi-Fi 4 / early Wi-Fi 5 (802.11n/ac Wave 1) APs (legacy) | 8.5.182.0 | EOL |
 
-EOL status: **6 Active** · 4 EOL
+EOL status: **6 Active · 4 EOL**
 
----
-
-## cisco_security.csv — Firewalls
+### Firewalls — `cisco_security.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
-| FWL-001 | Secure Firewall ASA 5500-X | SMB / Branch Next-Generation Firewall | 9.12.x (final) | EOL |
+| FWL-001 | Secure Firewall ASA 5500-X | SMB / Branch Next-Generation Firewall | 9.12.x (final for these models) | EOL |
 | FWL-002 | Secure Firewall ASA 5585-X | High-end Enterprise Firewall | 9.14.x (final) | EOL |
 | FWL-003 | Secure Firewall ASAv (virtual) | Virtual Firewall (cloud / hypervisor) | 9.24.x | Active |
 | FWL-004 | Secure Firewall 1000 | SMB / Branch NGFW | 7.6.4 | Active |
@@ -180,13 +176,11 @@ EOL status: **6 Active** · 4 EOL
 | FWL-007 | Secure Firewall 4100 | High-performance DC / Enterprise NGFW | FXOS 2.14.x | Active |
 | FWL-008 | Secure Firewall 4200 | High-performance NGFW (latest generation) | 7.6.4 | Active |
 | FWL-009 | Firepower 9300 | SP / Large DC NGFW (multi-blade chassis) | FXOS 2.14.x | Active |
-| FWL-010 | Secure Firewall ASA 5500 (original) | SMB / Enterprise Firewall (legacy) | 9.2.4 / 9.1.7 | EOL |
+| FWL-010 | Secure Firewall ASA 5500 (original) | SMB / Enterprise Firewall (legacy) | 9.2.4 (5505) / 9.1.7 (5510-5550) | EOL |
 
-EOL status: **7 Active** · 3 EOL
+EOL status: **7 Active · 3 EOL**
 
----
-
-## cisco_sdwan.csv — SD-WAN
+### SD-WAN — `cisco_sdwan.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
@@ -194,62 +188,56 @@ EOL status: **7 Active** · 3 EOL
 | SDW-002 | Catalyst SD-WAN cEdge | SD-WAN Branch / WAN Edge (IOS-XE SD-WAN) | 26.1.x | Active |
 | SDW-003 | Catalyst SD-WAN Controllers | SD-WAN Control Plane / Management / Orchestration | 20.15.x | Active |
 
-EOL status: **2 Active** · 1 EOL
+EOL status: **2 Active · 1 EOL**
 
----
-
-## cisco_software.csv — Management & Software Platforms
+### Management & Software — `cisco_software.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
 | SFT-001 | Cisco Catalyst Center | Enterprise Network Automation / Assurance / Provisioning | 3.1.6 | Active |
 | SFT-002 | Cisco Identity Services Engine (ISE) | Network Access Control (NAC) / Policy / AAA / Zero Trust | 3.5 | Active |
-| SFT-003 | Cisco Crosswork NSO | Multi-vendor Network Automation / Orchestration | 2026.02.0 | Active |
+| SFT-003 | Cisco Crosswork NSO (Network Services Orchestrator) | Multi-vendor Network Automation / Orchestration / Service Provisioning | 2026.02.0 (SMI AFP) | Active |
 | SFT-004 | Cisco Crosswork Network Controller | SP / DC WAN Traffic Engineering and Segment Routing Automation | 7.2.x | Active |
 | SFT-005 | Cisco Crosswork Optimization Engine | SP WAN Traffic Optimization / Bandwidth Management | 5.x | Active |
-| SFT-006 | Cisco ThousandEyes | Internet / SaaS / WAN Visibility and Network Intelligence | Continuous delivery (SaaS) | Active |
+| SFT-006 | Cisco ThousandEyes | Internet / SaaS / WAN Visibility and Network Intelligence | Continuous delivery (no fixed version) | Active |
 | SFT-007 | Cisco Secure Network Analytics (Stealthwatch) | Network Traffic Analysis / NDR / Threat Detection | 7.6.0 | Active |
-| SFT-008 | Cisco Secure Client (AnyConnect) | Remote Access VPN / Zero Trust Network Access (ZTNA) | 5.1.x | Active |
-| SFT-009 | Cisco Umbrella | DNS-layer Security / Cloud SWG / CASB / ZTNA | Continuous delivery (SaaS) | Active |
-| SFT-010 | Cisco Duo Security | Multi-Factor Authentication (MFA) / Zero Trust Access | Continuous delivery (SaaS) | Active |
-| SFT-011 | Cisco Intersight | Hybrid Cloud / Data Center Infrastructure Management | Continuous delivery (SaaS) | Active |
-| SFT-012 | Cisco Secure Workload (Tetration) | Application Micro-segmentation / Workload Security | 3.9.x | Active |
-| SFT-013 | Cisco AppDynamics | Application Performance Monitoring (APM) / Observability | Continuous delivery (SaaS) | Active |
-| SFT-014 | Cisco SD-WAN Manager (vManage) | Centralised SD-WAN Management and Policy Controller | 20.15.x | Active |
-| SFT-015 | Cisco Prime Infrastructure | Legacy Enterprise Network Management (NMS) | 3.10.x | EOL-Pending |
+| SFT-008 | Cisco Secure Client (AnyConnect) | Remote Access VPN / Zero Trust Network Access (ZTNA) / Endpoint Security | 5.1.x | Active |
+| SFT-009 | Cisco Umbrella | DNS-layer Security / Cloud-delivered Secure Web Gateway / CASB / ZTNA | Continuous delivery | Active |
+| SFT-010 | Cisco Duo Security | Multi-Factor Authentication (MFA) / Zero Trust Access | Continuous delivery | Active |
+| SFT-011 | Cisco Intersight | Hybrid Cloud / Data Center Infrastructure Management (DCIM) / UCS Management | 1.0.9-xxx (appliance) | Active |
+| SFT-012 | Cisco Secure Workload (Tetration) | Application Micro-segmentation / Workload Security / Policy Enforcement | 3.9.x | Active |
+| SFT-013 | Cisco AppDynamics | Application Performance Monitoring (APM) / Full-Stack Observability | Continuous delivery | Active |
+| SFT-014 | Cisco SD-WAN Manager (vManage) | Centralized SD-WAN Management and Policy Controller | 20.15.x | Active |
+| SFT-015 | Cisco Prime Infrastructure | Legacy Enterprise Network Management (NMS/FCAPS) | 3.10.x | EOL-Pending |
 
-EOL status: **14 Active** · 1 EOL-Pending
+EOL status: **14 Active · 1 EOL-Pending**
 
----
-
-## cisco_sp_extended.csv — Service Provider Extended
+### SP Extended — `cisco_sp_extended.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
 | SPX-001 | ASR 920 | SP Metro CE / Mobile Backhaul / Aggregation | 17.15.x | Active |
 | SPX-002 | ASR 901 / 901S | SP Metro CE / Cell Site Backhaul (small / ruggedized) | 17.15.x | EOL-Pending |
 | SPX-003 | ASR 9900 | SP Ultra High-density Core (fixed chassis) | 26.1.1 | Active |
-| SPX-004 | NCS 2000 Series | SP ROADM / Optical Line System (OLS) / DWDM | 26.x | Active |
+| SPX-004 | NCS 2000 Series | SP ROADM / Optical Line System (OLS) / DWDM | 26.x (IOS-XR 26.x) | Active |
 | SPX-005 | NCS 4000 Series | Converged Packet-Optical Transport (SP Metro) | 6.5.35 | EOL-Pending |
 | SPX-006 | XRv 9000 (virtual IOS-XR) | Virtual SP Router (lab / simulation / cloud PE) | 26.1.1 | Active |
 | SPX-007 | Cisco 8800 Series (SP Core) | Hyperscale / SP Core (large modular chassis) | 26.1.1 | Active |
 | SPX-008 | NCS 55A2-MOD / 55A1 | SP Metro / Aggregation / DC Peering (fixed) | 26.1.1 | Active |
-| SPX-009 | Cisco NCS 6000 | SP Core (large chassis — legacy) | 6.6.x | EOL |
-| SPX-010 | vBNG / BNG | SP Broadband Subscriber Management (BNG) | 26.1.1 | Active |
+| SPX-009 | Cisco Network Convergence System 6000 | SP Core (large chassis — legacy) | 6.6.x | EOL |
+| SPX-010 | vBNG / BNG (Broadband Network Gateway) | SP Broadband Subscriber Management (BNG) | 26.1.1 (on ASR 9000) | Active |
 | SPX-011 | Cisco CRS (Carrier Routing System) | SP Core / Backbone Router (legacy large chassis) | 5.3.4 | EOL |
 | SPX-012 | ME 3600X / ME 3800X | Metro Ethernet / Provider Edge Access Switch (legacy) | 3.8.0E (15.2(4)E) | EOL |
 
-EOL status: **7 Active** · 2 EOL-Pending · 3 EOL
+EOL status: **7 Active · 3 EOL · 2 EOL-Pending**
 
----
-
-## cisco_collaboration.csv — Unified Communications & Collaboration
+### Collaboration — `cisco_collaboration.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
 | CLB-001 | Cisco Unified Communications Manager (CUCM) | Enterprise IP Telephony / Call Control / PBX | 14.SU6 | Active |
 | CLB-002 | Cisco Unity Connection (CUC) | Enterprise Voicemail / Unified Messaging | 14.SU6 | Active |
-| CLB-003 | Cisco Expressway Series | Video / Voice Edge (Firewall Traversal / B2B / MRA) | X15.5.x | Active |
+| CLB-003 | Cisco Expressway Series | Video / Voice Collaboration Edge (Firewall Traversal / B2B / MRA) | X15.5.x | Active |
 | CLB-004 | Cisco Meeting Server (CMS) | On-premises Video Conferencing Infrastructure / Bridges | 3.9.x | Active |
 | CLB-005 | Cisco IP Phone 6800 Series | Desktop IP Phone (Mid-range) | 12.0(4)SR1 | Active |
 | CLB-006 | Cisco IP Phone 7800 Series | Desktop IP Phone (Business) | 14.2(1)SR1 | Active |
@@ -261,15 +249,11 @@ EOL status: **7 Active** · 2 EOL-Pending · 3 EOL
 
 EOL status: **11 Active**
 
----
-
-## cisco_meraki.csv — Meraki Cloud-Managed
-
-All Meraki products are managed via the **Meraki Dashboard** (cloud SaaS — no on-prem controller).
+### Meraki — `cisco_meraki.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
-| MRK-001 | Meraki MX (Small Branch) | Small Branch Security / SD-WAN / UTM | MX 19.2.8 | Active |
+| MRK-001 | Meraki MX (Small Branch) | Small Branch Security / SD-WAN / Unified Threat Management | MX 19.2.8 | Active |
 | MRK-002 | Meraki MX (Mid-size Branch) | Mid-size Branch / Campus Security / SD-WAN | MX 19.2.8 | Active |
 | MRK-003 | Meraki MX (Enterprise / DC) | Enterprise / DC Edge Security / SD-WAN Concentrator | MX 19.2.8 | Active |
 | MRK-004 | Meraki Z (Teleworker Gateway) | Teleworker / Work-from-Home Secure Gateway | MX 19.2.8 | Active |
@@ -285,106 +269,89 @@ All Meraki products are managed via the **Meraki Dashboard** (cloud SaaS — no 
 | MRK-014 | Meraki MT (IoT Sensors) | IoT Environmental and Asset Monitoring | Latest GA | Active |
 | MRK-015 | Meraki MG (Cellular Gateways) | Cloud-managed Cellular WAN / 4G LTE / 5G Gateway | MG 26.1.3 | Active |
 
-EOL status: **14 Active** · 1 EOL-Pending
+EOL status: **14 Active · 1 EOL-Pending**
 
----
-
-## cisco_dc_compute.csv — Data Centre, ACI & Compute
+### DC & Compute — `cisco_dc_compute.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
-| DCC-001 | Cisco APIC | DC Network Policy Controller for ACI | 6.2(2) | Active |
+| DCC-001 | Cisco APIC (Application Policy Infrastructure Controller) | DC Network Policy Controller for ACI (Application Centric Infrastructure) | 6.2(2) | Active |
 | DCC-002 | Nexus 9000 in ACI Mode | ACI Leaf / Spine (DC Fabric) | 16.2(2) | Active |
 | DCC-003 | Cisco MDS 9100 Series | Small / Mid-size SAN (FC / FCoE) | 9.4(5) | Active |
 | DCC-004 | Cisco MDS 9200 Series | Integrated SAN / IP Storage Access | 9.4(5) | Active |
 | DCC-005 | Cisco MDS 9396 Series | High-density SAN (FC / NVMe-oF) | 9.4(5) | Active |
 | DCC-006 | Cisco MDS 9700 Series | Large Enterprise / SP SAN Core | 9.4(5) | Active |
-| DCC-007 | Cisco UCS B-Series Blade Servers | Enterprise / HPC Blade Server (2/4-socket) | UCSM 4.3.x | Active |
-| DCC-008 | Cisco UCS C-Series Rack Servers | Enterprise Rack Server (1U/2U) | CIMC/UCSM 6.0 | Active |
+| DCC-007 | Cisco UCS B-Series Blade Servers | Enterprise / HPC Blade Server (2/4-socket) | Managed via Intersight | Active |
+| DCC-008 | Cisco UCS C-Series Rack Servers | Enterprise Rack Server (1U/2U) | 6.0 (CIMC/UCSM) | Active |
 | DCC-009 | Cisco UCS X-Series Modular System | Next-gen Modular Compute (Blade replacement) | Intersight (SaaS) | Active |
-| DCC-010 | Cisco UCS Fabric Interconnect 6400 Series | UCS Domain Fabric Interconnect (B/C-Series) | UCSM 4.3.x | Active |
-| DCC-011 | Cisco UCS Fabric Interconnect 6500 Series | UCS X-Series Domain Fabric Interconnect | UCSM 6.0 | Active |
-| DCC-012 | Cisco HyperFlex HX220c | 2-Node Hyper-Converged Infrastructure (HCI) | HXDP 6.0(1x) | Active |
-| DCC-013 | Cisco HyperFlex HX240c | High-density Hyper-Converged Infrastructure (HCI) | HXDP 6.0(1x) | Active |
-| DCC-014 | Cisco HyperFlex Edge | HCI for Remote / Branch Sites (ROBO) | HXDP 6.0(1x) | Active |
-| DCC-015 | Cisco ACI Multi-Site / NDO | Multi-DC / Multi-Cloud ACI Policy Management | NDO 4.2.x | Active |
+| DCC-010 | Cisco UCS Fabric Interconnect 6400 Series | UCS Domain Fabric Interconnect (Network Foundation) | 4.3.x | Active |
+| DCC-011 | Cisco UCS Fabric Interconnect 6500 Series | UCS X-Series Domain Fabric Interconnect | 6.0 | Active |
+| DCC-012 | Cisco HyperFlex HX220c | 2-Node Hyper-Converged Infrastructure (HCI) | 6.0(1x) | Active |
+| DCC-013 | Cisco HyperFlex HX240c | High-density Hyper-Converged Infrastructure (HCI) | 6.0(1x) | Active |
+| DCC-014 | Cisco HyperFlex Edge | HCI for Remote / Branch Sites (ROBO) | 6.0(1x) | Active |
+| DCC-015 | Cisco ACI Multi-Site / Multi-Pod | Multi-DC / Multi-Cloud ACI Policy Management | 4.2.x | Active |
 
 EOL status: **15 Active**
 
----
-
-## cisco_security_extended.csv — Extended Security Portfolio
+### Security Extended — `cisco_security_extended.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
-| SES-001 | Cisco Secure Email Gateway | Email Security / Anti-Spam / DLP (on-prem) | AsyncOS 16.0.4 HP2 | Active |
-| SES-002 | Cisco Secure Email Cloud Gateway | Cloud Email Security / Anti-Spam / DLP (SaaS) | AsyncOS 16.0.4 | Active |
-| SES-003 | Cisco Secure Web Appliance | Web Proxy / URL Filtering / Malware Protection (on-prem) | AsyncOS 15.2.3 HP1 | Active |
-| SES-004 | Cisco Secure Email and Web Manager | Centralised Management for SEG and SWA | AsyncOS 15.x | Active |
-| SES-005 | Cisco Secure Endpoint (Connector) | Endpoint Detection and Response (EDR) / AMP | 8.5.x | Active |
-| SES-006 | Cisco Secure Endpoint Private Cloud | On-prem EDR Management Console | 5.4.x | Active |
-| SES-007 | Cisco XDR | Threat Detection / Investigation / Response (SOC Platform) | 2.64 (SaaS) | Active |
-| SES-008 | Cisco Secure Access (SASE / SSE) | Secure Access Service Edge / ZTNA / SWG / CASB / FWaaS | 2026.1.x (SaaS) | Active |
-| SES-009 | Cisco Multicloud Defense | Cloud Workload Firewall / East-West Cloud Security | Continuous delivery (SaaS) | Active |
-| SES-010 | Cisco ISA 3000 | OT / ICS Network Segmentation Firewall | FTD 7.x | Active |
+| SES-001 | Cisco Secure Email Gateway | Email Security / Anti-Spam / Anti-Malware / DLP (on-prem) | 16.0.4 HP2 | Active |
+| SES-002 | Cisco Secure Email Cloud Gateway | Cloud Email Security / Anti-Spam / Anti-Malware / DLP (SaaS) | 16.0.4 (underlying platform) | Active |
+| SES-003 | Cisco Secure Web Appliance | Web Proxy / URL Filtering / Malware Protection / CASB (on-prem) | 15.2.3 HP1 | Active |
+| SES-004 | Cisco Secure Email and Web Manager | Centralised Management for SEG and SWA | 15.x | Active |
+| SES-005 | Cisco Secure Endpoint (Connector) | Endpoint Detection and Response (EDR) / AMP | 8.5.x (connector agent) | Active |
+| SES-006 | Cisco Secure Endpoint Private Cloud | On-prem EDR Management Console | SaaS-equivalent (console 5.4.x) | Active |
+| SES-007 | Cisco XDR (Extended Detection and Response) | Threat Detection / Investigation / Response (XDR / SOC Platform) | 2.64 (as of April 2026) | Active |
+| SES-008 | Cisco Secure Access (SASE / SSE) | Secure Access Service Edge (SASE) / Security Service Edge (SSE) / ZTNA | 2026.1.x (continuous) | Active |
+| SES-009 | Cisco Multicloud Defense | Cloud Workload Firewall / East-West Cloud Security | Continuous delivery | Active |
+| SES-010 | Cisco ISA 3000 (Industrial Security Appliance) | OT / ICS Network Segmentation Firewall | FTD 7.x | Active |
 | SES-011 | Cisco Cyber Vision | OT / ICS / IoT Asset Visibility and Threat Detection | 4.x | Active |
-| SES-012 | Cisco Secure Firewall Management Center (FMC) | Centralised NGFW Policy and Threat Management | 7.6.4 | Active |
+| SES-012 | Cisco Secure Firewall Management Center (FMC) | Centralised NGFW Policy and Threat Management | 7.6.4 (stable) | Active |
 
 EOL status: **12 Active**
 
----
-
-## cisco_industrial.csv — Industrial Networking / IoT
+### Industrial / IoT — `cisco_industrial.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
-| IND-001 | Cisco Catalyst IE3100 Rugged Series | Industrial Access Layer Switching (DIN-rail) | IOS-XE 17.14.x | Active |
-| IND-002 | Cisco Catalyst IE3200 Rugged Series | Industrial Access Layer Switching | IOS-XE 26.1.x | Active |
-| IND-003 | Cisco Catalyst IE3300 Rugged Series | Industrial Distribution Layer Switching | IOS-XE 26.1.x | Active |
-| IND-004 | Cisco Catalyst IE3400 Rugged Series | Industrial Access / Distribution Switching (IP67) | IOS-XE 26.1.x | Active |
-| IND-005 | Cisco Catalyst IE9300 Rugged Series | Next-gen Industrial Aggregation Switching | IOS-XE 26.1.x | Active |
-| IND-006 | Cisco Catalyst IR1101 Rugged Router | Industrial IoT Edge Router (compact) | IOS-XE 26.1.x | Active |
-| IND-007 | Cisco Catalyst IR1800 Rugged Series | Industrial WAN Edge / IoT Aggregation Router | IOS-XE 26.1.x | Active |
-| IND-008 | Cisco Catalyst IR8100 Heavy Duty Series | Industrial WAN Aggregation / SD-WAN Edge | IOS-XE 26.1.x | Active |
-| IND-009 | Cisco IW6300 Heavy Duty Series (Wi-Fi 5) | Industrial / Outdoor Wi-Fi 5 Access Point | IOS 15.3.3-JQ | EOL-Pending |
-| IND-010 | Cisco Catalyst IW9165 / IW9167 Rugged Series | Industrial Wi-Fi 6 / 6E Access Point (rugged outdoor) | IOS-XE 26.1.x | Active |
+| IND-001 | Cisco Catalyst IE3100 Rugged Series | Industrial / Utility Access Layer Switching (DIN-rail) | 17.14.x | Active |
+| IND-002 | Cisco Catalyst IE3200 Rugged Series | Industrial Access Layer Switching (DIN-rail / rack) | 26.1.x | Active |
+| IND-003 | Cisco Catalyst IE3300 Rugged Series | Industrial Distribution Layer Switching | 26.1.x | Active |
+| IND-004 | Cisco Catalyst IE3400 Rugged Series | Industrial Access / Distribution Switching (extended temp / IP67) | 26.1.x | Active |
+| IND-005 | Cisco Catalyst IE9300 Rugged Series | Next-gen Industrial Distribution / Aggregation Switching | 26.1.x | Active |
+| IND-006 | Cisco Catalyst IR1101 Rugged Router | Industrial IoT Edge Router / Cell Site Router (compact) | 26.1.x | Active |
+| IND-007 | Cisco Catalyst IR1800 Rugged Series Routers | Industrial WAN Edge / IoT Aggregation Router | 26.1.x | Active |
+| IND-008 | Cisco Catalyst IR8100 Heavy Duty Series | Industrial WAN Aggregation / SD-WAN Edge (large / outdoor) | 26.1.x | Active |
+| IND-009 | Cisco IW6300 Heavy Duty Series (Wi-Fi 5) | Industrial / Outdoor Wi-Fi 5 (802.11ac) Access Point | 15.3.3-JQ (final maintenance) | EOL-Pending |
+| IND-010 | Cisco Catalyst IW9165 / IW9167 Rugged Series | Industrial Wi-Fi 6 / Wi-Fi 6E Access Point (rugged outdoor) | 26.1.x | Active |
 | IND-011 | Cisco Cyber Vision | OT / ICS / IoT Asset Discovery and Threat Detection | 4.x | Active |
-| IND-012 | Cisco IC3000 Industrial Compute Gateway | Industrial IoT Edge Compute Gateway | 1.x | Active |
-| IND-013 | Cisco IoT Operations Dashboard | Centralized IoT Device / Connectivity Management | Continuous delivery (SaaS) | Active |
-| IND-014 | Cisco Kinetic (EOL) | IoT Data Processing / Edge Intelligence Platform | 2.x (final) | EOL |
+| IND-012 | Cisco IC3000 Industrial Compute Gateway | Industrial IoT Edge Compute Gateway / Sensor Aggregation | 1.x | Active |
+| IND-013 | Cisco IoT Operations Dashboard | Centralized IoT Device / Connectivity Management | Continuous delivery | Active |
+| IND-014 | Cisco Kinetic for Cities / Kinetic (EOL) | IoT Data Processing / Edge Intelligence Platform | 2.x (final) | EOL |
 
-EOL status: **12 Active** · 1 EOL-Pending · 1 EOL
+EOL status: **12 Active · 1 EOL-Pending · 1 EOL**
 
----
-
-## cisco_sp_mobile.csv — SP Mobile Core
+### SP Mobile — `cisco_sp_mobile.csv`
 
 | ID | Product Family | Use Case | Gold Version | EOL Status |
 |---|---|---|---|---|
-| SPM-001 | Cisco ASR 5000 | SP Mobile Packet Core — 4G LTE (legacy platform) | StarOS 21.28.x | EOL-Pending |
-| SPM-002 | Cisco ASR 5500 | SP 4G LTE EPC / 5G NSA Core | StarOS 2026.02.x | Active |
-| SPM-003 | Cisco ASR 5700 | SP 4G LTE / 5G NSA Packet Core (high-density) | StarOS 2026.02.x | Active |
-| SPM-004 | Cisco Ultra Packet Core (VPC-DI/SI) | Virtualised SP 4G LTE EPC / 5G NSA Core (NFV) | StarOS 2026.02.x | Active |
-| SPM-005 | Cisco Ultra Cloud Core — AMF | 5G Standalone Core — Access and Mobility | Cloud-native 2026.x | Active |
-| SPM-006 | Cisco Ultra Cloud Core — SMF | 5G Standalone Core — Session Management | Cloud-native 2026.x | Active |
-| SPM-007 | Cisco Ultra Cloud Core — UPF | 5G Standalone Core — User Plane / Data Path | Cloud-native 2026.x | Active |
-| SPM-008 | Cisco Ultra Cloud Core — PCF | 5G Standalone Core — Policy Control | Cloud-native 2026.x | Active |
-| SPM-009 | Cisco BroadWorks | SP Cloud Calling Platform / UCaaS for Service Providers | Release 26 | Active |
-| SPM-010 | Cisco IoT Control Center | SP IoT / SIM / Connectivity Management Platform | Continuous delivery (SaaS) | Active |
-| SPM-011 | Cisco NFVI / VIM | SP NFV Infrastructure / ETSI NFV-compliant Cloud | 5.x | Active |
+| SPM-001 | Cisco ASR 5000 | SP Mobile Packet Core — 4G LTE (legacy platform) | 21.28.x (legacy train) | EOL-Pending |
+| SPM-002 | Cisco ASR 5500 | SP 4G LTE EPC / 5G NSA Core | 2026.02.x | Active |
+| SPM-003 | Cisco ASR 5700 | SP 4G LTE / 5G NSA Packet Core (high-density) | 2026.02.x | Active |
+| SPM-004 | Cisco Ultra Packet Core (UPC) — Virtual EPC | Virtualised SP 4G LTE EPC / 5G NSA Core (NFV) | 2026.02.x | Active |
+| SPM-005 | Cisco Ultra Cloud Core — AMF (5G SA) | 5G Standalone Core — Access and Mobility | 2026.x | Active |
+| SPM-006 | Cisco Ultra Cloud Core — SMF (5G SA) | 5G Standalone Core — Session Management | 2026.x | Active |
+| SPM-007 | Cisco Ultra Cloud Core — UPF (5G SA) | 5G Standalone Core — User Plane / Data Path | 2026.x | Active |
+| SPM-008 | Cisco Ultra Cloud Core — PCF (5G SA) | 5G Standalone Core — Policy Control | 2026.x | Active |
+| SPM-009 | Cisco BroadWorks | SP Cloud Calling Platform / UCaaS for Service Providers | Release 26 (Release 27 expected Aug 2026) | Active |
+| SPM-010 | Cisco IoT Control Center (formerly Jasper) | SP IoT / SIM / Connectivity Management Platform | Continuous delivery | Active |
+| SPM-011 | Cisco Network Function Virtualization Infrastructure (NFVI) | SP NFV Infrastructure / ETSI NFV-compliant Cloud | 5.x | Active |
 
-EOL status: **10 Active** · 1 EOL-Pending
+EOL status: **10 Active · 1 EOL-Pending**
 
-## cisco_all_products.csv — Combined All-Products Dataset
-
-A single-file merge of all 15 product CSVs above. Uses the same schema (identical columns). Useful for:
-- Bulk queries and analysis across the entire Cisco product portfolio
-- AI/ML training or retrieval where a single knowledge source is preferred
-- Cross-domain EOL reporting
-
-**164 product rows.** Auto-generated — do not edit directly. Regenerate using the Python script in Step 5 of `/update-cisco-data` after any product CSV change.
-
----
+<!-- AUTO-GENERATED:DATA-TABLES:END -->
 
 ## cisco_sources.csv — Source Reference
 
@@ -396,7 +363,9 @@ A single-file merge of all 15 product CSVs above. Uses the same schema (identica
 | `url` | Direct URL to Cisco's release notes or documentation page |
 | `last_verified` | Date this source was last checked |
 
-**110 sources** (SRC-001 to SRC-109) covering all product files. Each product's `source_ids` field links directly to the pages needed for version refresh.
+**109 sources** (SRC-001 to SRC-109) covering all product files. Each product's `source_ids` field links directly to the pages needed for version refresh.
+
+Fetch behaviour and known-good replacement URLs are recorded in `data/source_endpoints.yml` — read it before refreshing. Check URL health with `python3 tools/check_sources.py`.
 
 ---
 

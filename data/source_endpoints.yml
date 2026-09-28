@@ -1,0 +1,175 @@
+# Verified Source Endpoint Registry
+#
+# PURPOSE
+#   This file records the exact URLs that were manually verified to work on
+#   2026-09-29, so the next refresh does not have to rediscover them by
+#   searching. `data/cisco_sources.csv` is the canonical source-of-truth for
+#   URLs; this file is the *working notes* layer that explains HOW each URL
+#   behaves and what to expect from it.
+#
+# HOW TO USE
+#   1. Run `python3 tools/check_sources.py` to get current HTTP status.
+#   2. Anything reported DEAD: look up the replacement in `replacements:` below,
+#      or re-discover using the discovery techniques in `discovery:` below.
+#   3. Update `verified_on` when you re-confirm a URL by hand.
+#
+# CRITICAL FETCHING NOTES  (learned the hard way — please read)
+#   * cisco.com returns HTTP 403 to plain `curl` / `requests`, even with a
+#     browser User-Agent. This is bot-blocking, NOT a dead link. Confirmed:
+#     SRC-001 returns 403 via curl but fetches perfectly in a real browser.
+#     => Use the integrated browser (Playwright), not curl, for Cisco pages.
+#   * documentation.meraki.com DOES serve plain HTTP requests (no bot-block).
+#     It is the one source family that is cheap to script.
+#   * Meraki content is JavaScript-rendered. Fetching the raw HTML returns an
+#     empty <body>. You must render the page before reading innerText.
+#   * Several Meraki "Last updated" dates are older than the version data they
+#     describe. Treat the page date as a weak signal only.
+
+meta:
+  verified_on: 2026-09-29
+  verified_by: manual browser fetch
+  total_sources: 109
+  live_and_fetchable: 104
+  dead_404: 5
+
+# ---------------------------------------------------------------------------
+# DISCOVERY TECHNIQUES  (use these instead of guessing URLs)
+# ---------------------------------------------------------------------------
+discovery:
+  meraki_search_api: >-
+    Public JSON search API on the Meraki docs site. Much faster and more
+    reliable than guessing paths. Use from a browser context on any
+    documentation.meraki.com page:
+
+      fetch('https://documentation.meraki.com/@api/deki/site/query'
+            + '?q=' + encodeURIComponent('firmware changelog')
+            + '&limit=40&dream.out.format=json', {credentials: 'omit'})
+
+    Returns {result: [{type, page: {path, title}}, ...]}. Filter to
+    type === 'page'. This is how the current Meraki paths below were found
+    after the old ones went 404.
+
+  meraki_toc_parsing: >-
+    The table of contents on a *Features Directory page lists firmware trains
+    in descending order (newest first). Extracting the first few `X.Y.X`
+    tokens from the TOC gives you the current trains without parsing the body.
+    Verified to work for MX, MR, MS, MG.
+
+  cisco_tac_recommendation: >-
+    TAC "Recommended Releases" pages contain a clean HTML table mapping product
+    family to recommended release, plus a "Revision History" table with the
+    publication date of each revision. The revision history is the best way to
+    tell whether the page is current — see SRC-001 below as the worked example.
+
+# ---------------------------------------------------------------------------
+# DEAD SOURCES AND THEIR VERIFIED REPLACEMENTS
+# ---------------------------------------------------------------------------
+# Meraki reorganised its documentation taxonomy. Old `/MX/...` style paths were
+# retired; the content moved under `/Platform_Management/Product_Information/
+# Compatibility_and_Firmware/` and product-specific namespaces.
+# The per-product "Firmware Changelog" pages were replaced by
+# "*_Firmware_Features_Directory" pages.
+
+replacements:
+  - source_id: SRC-065
+    description: Cisco Meraki MX / Z Firmware Features Directory
+    dead_url: https://documentation.meraki.com/MX/MX_Overview_and_Specifications/MX_Firmware_Changelog
+    live_url: https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/Security_and_SD-WAN_(MX,Z)_Features_Directory
+    page_last_updated: 2026-09-09
+    notes: >-
+      TOC trains (descending): 26.2.X (GA), 26.1.X (GA), 19.2.X, 19.1.X,
+      18.2.X, 18.1.X, 17.X (Old Stable Release), then 16.X / 15.X (Archive).
+      NOTE the URL contains parentheses and a comma — percent-encode as
+      %28MX%2CZ%29 when embedding in a query string.
+
+  - source_id: SRC-066
+    description: Cisco Meraki MS / CS Firmware Features Directory
+    dead_url: https://documentation.meraki.com/MS/MS_Overview_and_Specifications/MS_Firmware_Changelog
+    live_url: https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/MS_Firmware_Features_Directory
+    page_last_updated: 2025-09-16
+    notes: >-
+      Page title is "MS and CS Firmware Features Directory" — covers both Meraki
+      Switching and Catalyst Switching (cloud-managed). Trains: MS 18, 17, 16,
+      15; CS 17, 16, 15.
+
+  - source_id: SRC-067
+    description: Cisco Meraki MR Firmware Features Directory
+    dead_url: https://documentation.meraki.com/MR/MR_Overview_and_Specifications/MR_Firmware_Changelog
+    live_url: https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/Wireless_(MR)_Firmware_Features_Directory
+    page_last_updated: 2026-09-29
+    notes: >-
+      TOC trains (descending): 32.2.X, 32.1.X, 31.1.X. Body contained a
+      concrete 33.1.1 build reference, so the 33.x train is starting to appear
+      even though the TOC has not been updated to list it. Page updated
+      2026-09-29 (today) so this is fresh.
+
+  - source_id: SRC-068
+    description: Cisco Meraki MV Firmware Information
+    dead_url: https://documentation.meraki.com/MV/MV_Overview_and_Specifications/MV_Firmware_Changelog
+    live_url: https://documentation.meraki.com/IoT/MV_-_Smart_Cameras/Product_Information/Compatibility_and_Firmware/Firmware_Updates_on_MV_Smart_Cameras
+    page_last_updated: 2026-09-23
+    notes: >-
+      WEAKER SOURCE than the others. This is a how-to guide, not a version
+      table — it contains NO extractable version numbers (verified: zero
+      matches for a X.Y.Z pattern). MV versions must be read manually from the
+      page or obtained from the Dashboard. Treat MV as manual-only for now.
+      Also relevant: IoT/MV_-_Smart_Cameras/Product_Information/
+      Compatibility_and_Firmware/Firmware_Updates_on_MV_Smart_Cameras is the
+      parent index.
+
+  - source_id: SRC-070
+    description: Cisco Meraki MG Cellular Gateway Firmware Features Directory
+    dead_url: https://documentation.meraki.com/MG/MG_Overview_and_Specifications/MG_Firmware_Changelog
+    live_url: https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/Cellular_Gateway_(MG)_Firmware_Features_Directory
+    page_last_updated: 2026-04-14
+    notes: >-
+      IMPORTANT: TOC explicitly labels "Beta Release - MG 26.1 Firmware Features"
+      and "Stable Release - MG 3.212". So 26.1 is BETA, not the gold release.
+      Our dataset recorded 26.1.3 as the gold version, which is wrong — the
+      stable train is 3.212. Flagged for correction.
+
+# ---------------------------------------------------------------------------
+# WORKED EXAMPLE — how to read a Cisco TAC recommended-release page
+# ---------------------------------------------------------------------------
+worked_example:
+  source_id: SRC-001
+  url: https://www.cisco.com/c/en/us/support/docs/switches/catalyst-9300-series-switches/214814-recommended-releases-for-catalyst-9200-9.html
+  fetch_method: browser only (curl gets 403)
+  page_updated: 2026-09-04
+  currency_marker: "recommendations stated here are current as of September 2026"
+  extracted:
+    catalyst_9200: 17.18.4, 17.15.6
+    catalyst_9300: 17.18.4, 17.15.6
+    catalyst_9400: 17.18.4, 17.15.6
+    catalyst_9500: 17.18.4, 17.15.6
+    catalyst_9600: 17.18.4, 17.15.6
+  revision_history_top:
+    - "27.0 | 04-Sep-2026 | Added 17.18.4 in addition to 17.15.6 as recommended releases, removed references to 16.12"
+    - "26.0 | 25-Aug-2026 | Updated 17.15.6 as recommended release."
+    - "25.0 | 16-Apr-2026 | Updated 17.15.5 as recommended release."
+  interpretation: >-
+    Cisco now publishes TWO recommended releases per platform. Per every third
+    train, Cisco designates an "Extended-Support" release (12mo) vs
+    "Standard-Support" (48mo). 17.15 and 17.18 are both Extended-Support.
+    DECISION NEEDED: pick one as `gold_version`. Recommend 17.18.4 as
+    gold_version (newer extended-support train) and record 17.15.6 in notes
+    as the conservative alternative. See `gold_version_policy` below.
+
+  sibling_pages:
+    - https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/214946-recommended-releases-for-catalyst-2960-3.html
+      covers: Catalyst 1000/2960/3560/CDB/4500, 3650/3850, 6500/6800
+    - https://www.cisco.com/c/en/us/support/docs/wireless/catalyst-9800-series-wireless-controllers/214749-tac-recommended-ios-xe-builds-for-wirele.html
+      covers: Catalyst 9800 WLC  <-- needed for WLS-001..004, not yet checked
+
+# ---------------------------------------------------------------------------
+# DECISION POLICY for dual recommended releases
+# ---------------------------------------------------------------------------
+gold_version_policy:
+  rule: >-
+    Where a TAC page lists two recommended releases, `gold_version` = the
+    NEWER Extended-Support train, and the older alternative is preserved in the
+    `notes` field so no information is lost.
+  pending_confirmation:
+    - WLS-001..004 (Catalyst 9800 WLC) gold version — sibling page above is
+      identified but has NOT been read yet. Do this before touching WLS rows.
+    - MV cameras — no machine-readable source found; manual verification needed.
