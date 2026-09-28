@@ -49,7 +49,7 @@ source_id, description, platform_scope, url, last_verified
 ```
 
 - `last_verified`: ISO date (YYYY-MM-DD) when the URL was last confirmed live and relevant
-- Source IDs are sequential: next available is SRC-110
+- Source IDs are sequential: next available is SRC-117
 
 ## Data Refresh Process
 
@@ -183,6 +183,7 @@ Prefer in this order:
 | `tools/check_sources.py` | HTTP status sweep over all registered source URLs. Run before a refresh to spot dead sources. |
 | `tools/validate.py` | Schema, ID format, prefix-to-file, `eol_status` enum, and `source_ids` referential-integrity checks. |
 | `tools/build.py` | Regenerates `data/cisco_all_products.csv` and the README data tables from the product CSVs. |
+| `tools/refresh_2026_09_29.py` | One-shot record of the 2026-09-29 refresh (97 rows). Kept as an audit trail of what was verified and why; not for reuse. |
 
 Regenerate derived files after **any** product CSV change:
 ```

@@ -28,9 +28,122 @@
 meta:
   verified_on: 2026-09-29
   verified_by: manual browser fetch
-  total_sources: 109
+  total_sources: 116
   live_and_fetchable: 104
   dead_404: 5
+  last_full_refresh: 2026-09-29   # 97 product rows updated; see tools/refresh_2026_09_29.py
+
+# ---------------------------------------------------------------------------
+# AUTHORITATIVE TAC PAGES  (discovered 2026-09-29 — these were MISSING before)
+# ---------------------------------------------------------------------------
+# These four pages are the single best source for gold_version on their
+# platforms. They were not registered in cisco_sources.csv until this refresh.
+
+new_authoritative_sources:
+  - source_id: SRC-110
+    title: "Resolve Releases for IOS XR Routers (TAC)"
+    url: https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-xr-software/222669-recommended-releases-for-ios-xr-routers.html
+    page_updated: 2026-07-27
+    covers: >-
+      ASR 9000, ASR 9900, NCS 540/5500/560/5700, Cisco 8000, Cisco 8800,
+      XRv 9000, XRd. Gold = 25.2.21. Newest Feature Release = 26.3.1.
+    note: >-
+      Page was renamed from "Recommended Releases for IOS XR Routers" to
+      "Resolve Releases for IOS XR Routers". 25.2.21 is an EMR
+      (xx.yy.NN format), 26.3.1 is a Feature Release — genuinely different
+      kinds of release, so latest != a newer form of gold.
+
+  - source_id: SRC-111
+    title: "Choose Stable Cisco IOS XE Release for Enterprise Routing Platforms (TAC)"
+    url: https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-xe-16/215567-recommended-releases-for-asr1000-isr400.html
+    page_updated: 2026-06-15
+    covers: "Catalyst 8200/8300/8500/8000v, ASR 1000, ISR 4000, ISR 1000"
+    gold: "17.15.6 (alternatives: 17.12.8; 17.9.10 for older RP2 / 4200 hardware)"
+
+  - source_id: SRC-112
+    title: "Recommended Releases for Cisco ACI (TAC)"
+    url: https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/recommended-release/b_Recommended_Cisco_ACI_Releases.html
+    page_updated: 2026-08-29
+    covers: "APIC and Nexus 9000 in ACI mode"
+    note: "latest 6.2(3g) / gold 6.1(5e), alternative 6.0(9e). N9K ACI-mode mirrors the APIC train (16.2(3g) / 16.1(5e))."
+
+  - source_id: SRC-113
+    title: "Cisco MDS NX-OS Recommended Releases (TAC)"
+    url: https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/sw/b_MDS_NX-OS_Recommended_Releases.html
+    page_updated: 2026-08-06
+    covers: "MDS 9100 / 9200 / 9396 / 9700"
+    note: "9.4(5) recommended across all listed platforms; 9.4(3b) is the FICON-qualified variant."
+
+  - source_id: SRC-114
+    title: "Secure Firewall suggested releases (FTD / FMC)"
+    url: https://www.cisco.com/c/en/us/td/docs/security/secure-firewall/roadmap/management-center-new-features-by-release.html
+    page_updated: 2026-09-22
+    note: >-
+      FTD/FMC have NO 8.x or 9.x train — Cisco went 7.7 to 10.0.
+      Current: 10.1.0 newest, but Cisco's "suggested release" is 7.6.6.
+      So gold is deliberately a MAJOR version behind latest here. This is
+      the opposite of the Catalyst dual-recommendation case.
+
+  - source_id: SRC-115
+    title: "Webex RoomOS Release Notes"
+    url: https://roomos.cisco.com/doc/WhatsNew/ReleaseNotesRoomOS_11
+    page_updated: 2026-08-18
+    note: >-
+      roomos.cisco.com is NOT on cisco.com, so it is NOT bot-blocked and
+      fetches cleanly as plain markdown (GitHub-sourced). Replaces the
+      JS-rendered collaborationhelp.cisco.com page (SRC-062).
+      Current RoomOS 11.32.7.0. There is no "RoomOS 26" build.
+
+  - source_id: SRC-116
+    title: "Cisco Catalyst SD-WAN TAC Recommended Releases"
+    url: https://www.cisco.com/c/en/us/support/docs/routers/sd-wan/215676-cisco-tac-and-bu-recommended-sd-wan-soft.html
+    page_updated: 2026-05-19
+    note: >-
+      WARNING: this page looks STALE. Highest controller train listed is
+      20.15.5.2, but other 2026 pages reference IOS XE 26.x. Re-verify
+      before treating as current.
+
+# ---------------------------------------------------------------------------
+# BROKEN / UNUSABLE SOURCES found during the 2026-09-29 refresh
+# ---------------------------------------------------------------------------
+broken_sources:
+  - source_id: SRC-062
+    problem: "JS-rendered, unextractable. collaborationhelp.cisco.com failed every fetch attempt."
+    replacement: SRC-115
+    replacement_url: https://roomos.cisco.com/doc/WhatsNew/ReleaseNotesRoomOS_11
+  - source_id: SRC-095
+    problem: "asr-5000-series/products-release-notes-list.html returns 404."
+    replacement: "https://www.cisco.com/c/en/us/support/wireless/asr-5000-series/series.html"
+  - source_id: SRC-096
+    problem: >-
+      RelNotes-StarOS-2026_01_ga0.html silently REDIRECTS to a doubleclick
+      ad tracker instead of erroring. A naive HTTP 200 check will pass it
+      while the content is gone. Watch for unexpected redirect targets in
+      check_sources.py output.
+    current_staros_page: >-
+      https://www.cisco.com/c/en/us/td/docs/wireless/asr_5000/2026-02/RelNotes-StarOS-2026_02_ga0.html
+
+# ---------------------------------------------------------------------------
+# PLATFORMS WITH NO TAC RECOMMENDED-RELEASE PAGE
+# ---------------------------------------------------------------------------
+# For these, gold_version is set to the latest verified GA release and the
+# row's notes say so explicitly. Do NOT dress a "latest" up as a "gold".
+no_tac_gold_page:
+  - "CUCM, Unity Connection, Expressway, IP Phones 7800/8800 (release-notes list only)"
+  - "Cisco ISE, Catalyst Center (no recommended page)"
+  - "ASR 920, ASR 901 (not covered by SRC-111)"
+  - "Catalyst IE / IR rugged series (release-notes list only)"
+  - "StarOS / ASR 5K, BroadWorks, Crosswork NSO"
+  - "NSO core release notes live OFF-SITE at nso-docs.cisco.com, not cisco.com"
+
+open_items:
+  - "CSW-010 Catalyst 1300 — no source verified this pass; left unchanged"
+  - "MRK-012 / MRK-013 Meraki MV — no machine-readable source. Set to 'Manual verification required'."
+  - "MRK-014 Meraki MT — recorded as 'Latest GA'; no version directory found."
+  - "WLC-007/008/009 AireOS — 9800 TAC page recommends AireOS 8.10.196.0 for IRCM, not 8.10.190.0. Verify."
+  - "SPM-002 ASR 5500 — NOT listed as qualified in the StarOS 2026.02 platform table. Investigate before new deployments."
+  - "DCW-005 Nexus 3000/3100/3200 — latest/gold look transposed (latest 10.5(5)M, gold 10.6(2)F). Verify which is correct."
+  - "SRC-116 SD-WAN page appears stale; re-verify against current trains."
 
 # ---------------------------------------------------------------------------
 # DISCOVERY TECHNIQUES  (use these instead of guessing URLs)
