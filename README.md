@@ -357,13 +357,17 @@ EOL status: **10 Active · 1 EOL-Pending**
 
 | Field | Description |
 |---|---|
-| `source_id` | Unique ID (SRC-001 to SRC-109) referenced in all product files |
+| `source_id` | Unique ID referenced in all product files |
 | `description` | What the page covers |
 | `platform_scope` | Which product(s) the source applies to |
 | `url` | Direct URL to Cisco's release notes or documentation page |
 | `last_verified` | Date this source was last checked |
 
-**109 sources** (SRC-001 to SRC-109) covering all product files. Each product's `source_ids` field links directly to the pages needed for version refresh.
+<!-- AUTO-GENERATED:SOURCE-COUNT:BEGIN -->
+**116 sources** (SRC-001 to SRC-116) covering all product files. Each product's `source_ids` field links directly to the pages needed for version refresh.
+
+Next available source ID: **SRC-117**.
+<!-- AUTO-GENERATED:SOURCE-COUNT:END -->
 
 Fetch behaviour and known-good replacement URLs are recorded in `data/source_endpoints.yml` — read it before refreshing. Check URL health with `python3 tools/check_sources.py`.
 
@@ -382,12 +386,12 @@ Fetch behaviour and known-good replacement URLs are recorded in `data/source_end
 | **IOS (Classic)** | Catalyst 2960-X, Catalyst 1000 | `15.2(x)Ex` |
 | **Viptela OS** | SD-WAN vEdge, SD-WAN Controllers (vManage/vSmart/vBond) | `20.x.x` |
 | **AireOS** | Aironet APs (legacy) | `8.10.x` |
-| **RoomOS** | Webex Room / Board / Desk devices | `26.x` (year-based) |
-| **Meraki MX firmware** | Meraki MX, Z Series | `19.x.x` (stable) / `26.x.x` (latest) |
+| **RoomOS** | Webex Room / Board / Desk devices | `11.x` (e.g. 11.32.7.0) — 11.32 is the final RoomOS 11 train |
+| **Meraki MX firmware** | Meraki MX, Z Series | `26.2.X` (current GA) / `19.2.X` (previous line) |
 | **Meraki MS firmware** | Meraki MS Switches | `18.x.x` |
-| **Meraki MR firmware** | Meraki MR APs | `32.x.x` |
-| **Meraki MV firmware** | Meraki MV Cameras | `7.x.x` |
-| **Meraki MG firmware** | Meraki MG Cellular Gateways | `26.x.x` |
+| **Meraki MR firmware** | Meraki MR APs | `32.x.x` (33.x train starting to ship) |
+| **Meraki MV firmware** | Meraki MV Cameras | No machine-readable source — verify in the Dashboard |
+| **Meraki MG firmware** | Meraki MG Cellular Gateways | `3.212` (stable) / `26.1` (**beta**) |
 | **SaaS (continuous)** | ThousandEyes, Umbrella, Duo, Webex Calling, Meraki Dashboard, XDR, Secure Access | No fixed version — continuous delivery |
 | **UC OS** | CUCM, Unity Connection | `15.x` (major) + SU suffix (e.g., 15.SU4a) |
 | **Expressway OS** | Cisco Expressway | `X15.x.x` |
@@ -418,10 +422,29 @@ Two EMRs per year are now published instead of one. IOS-XR adopted the same year
 
 ## Keeping This Data Current
 
-1. Open `data/cisco_sources.csv` and find the `source_id(s)` for the product to update.
-2. Visit the URL — each links directly to Cisco's release notes list or recommended-release page.
-3. Update `latest_version` in the relevant product CSV.
-4. Update `last_verified` in `cisco_sources.csv`.
+**Start here:** read `data/source_endpoints.yml`. It records the verified URL for every source, which ones are known-broken, and how each host behaves. That file saves rediscovering the Meraki taxonomy from scratch.
+
+1. Run `python3 tools/check_sources.py` to find dead URLs.
+2. For anything reported `DEAD`, look up the replacement in `source_endpoints.yml`.
+3. Fetch the source and update `latest_version` and `gold_version` in the product CSV.
+4. Update `last_verified` in `cisco_sources.csv` and `last_updated` in the product row.
+5. Run `python3 tools/build.py && python3 tools/validate.py`.
+
+**Fetching rules — these are not optional:**
+
+| Host | How to fetch | Why |
+|---|---|---|
+| `cisco.com` | Integrated browser only | Returns **403** to `curl`/`requests`, even with a browser User-Agent. Bot-blocking, not a dead link. |
+| `documentation.meraki.com` | Any HTTP client, then render | Serves requests normally but the body is JavaScript-rendered — raw HTML is empty. |
+| `roomos.cisco.com` | Plain fetch works | Not bot-blocked; GitHub-sourced markdown. |
+
+**Where to find gold versions.** Priority order:
+
+1. TAC recommended-release pages (`source_endpoints.yml` lists which platform each covers)
+2. Cisco release-notes list pages
+3. Meraki `*_Firmware_Features_Directory` pages — the per-product `Firmware_Changelog` paths were retired in 2026
+
+**Watch for Beta and Archive labels.** The Meraki MG directory lists `26.1` as *Beta* and `3.212` as *Stable*; the higher number is not automatically the better answer.
 
 Recommended check frequency: **quarterly** — Cisco ships major releases every 6 months, with maintenance updates in between. Meraki firmware updates more frequently (monthly).
 
@@ -431,6 +454,13 @@ Recommended check frequency: **quarterly** — Cisco ships major releases every 
 
 ## Data Currency
 
-Versions verified against live Cisco.com: **28 May 2026** · Legacy product EOL dates sourced from Cisco EoL notices.
+Versions verified against live Cisco and Meraki documentation: **29 September 2026** · Legacy product EOL dates sourced from Cisco EoL notices.
+
+Coverage is uneven and deliberate. 97 of 164 rows were re-verified against a fetched source page on 29 September 2026; the remaining 67 have no machine-readable version source and were left unchanged rather than guessed. The `last_updated` column records which is which.
+
+**Before trusting a version, note two traps:**
+
+- A `curl` or scripted HTTP request to `cisco.com` returns **403** even for live pages. That is bot-blocking, not a dead link — confirm in a browser before replacing a URL.
+- Cisco's "gold" (TAC-recommended) release is often *behind* the newest release, sometimes by a full major version. Secure Firewall gold is `7.6.6` while latest is `10.1.0`; that is Cisco's own "suggested release", not an error.
 
 All source URLs are canonical Cisco.com or Meraki documentation pages — they remain stable even as new software versions are released.

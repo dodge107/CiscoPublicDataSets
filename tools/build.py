@@ -52,6 +52,8 @@ BEGIN = "<!-- AUTO-GENERATED:FILE-TABLE:BEGIN -->"
 END = "<!-- AUTO-GENERATED:FILE-TABLE:END -->"
 BEGIN_D = "<!-- AUTO-GENERATED:DATA-TABLES:BEGIN -->"
 END_D = "<!-- AUTO-GENERATED:DATA-TABLES:END -->"
+BEGIN_S = "<!-- AUTO-GENERATED:SOURCE-COUNT:BEGIN -->"
+END_S = "<!-- AUTO-GENERATED:SOURCE-COUNT:END -->"
 
 
 def read_rows(stem: str) -> list[dict]:
@@ -114,6 +116,24 @@ def data_tables() -> str:
     return "\n".join(out)
 
 
+def source_count_block() -> str:
+    rows = list(csv.DictReader((DATA / "cisco_sources.csv").open(encoding="utf-8")))
+    ids = sorted(r["source_id"] for r in rows if r.get("source_id"))
+    n = len(ids)
+    last = ids[-1] if ids else "none"
+    nxt = f"SRC-{int(last.split('-')[1]) + 1:03d}" if ids else "SRC-001"
+    # Everything this block owns MUST live between the markers. Any line
+    # emitted outside them is not replaced on the next run, so it duplicates.
+    return "\n".join([
+        BEGIN_S,
+        f"**{n} sources** ({ids[0]} to {last}) covering all product files. "
+        "Each product's `source_ids` field links directly to the pages needed for version refresh.",
+        "",
+        f"Next available source ID: **{nxt}**.",
+        END_S,
+    ])
+
+
 def splice(text: str, begin: str, end: str, block: str, label: str) -> str:
     """Replace the region between begin/end markers. If absent, append."""
     if begin in text and end in text:
@@ -135,10 +155,12 @@ def main() -> int:
     merged = build_combined()
     new_table = file_table(merged)
     new_data = data_tables()
+    new_sources = source_count_block()
 
     original = README.read_text(encoding="utf-8")
     updated = splice(original, BEGIN, END, new_table, "file table")
     updated = splice(updated, BEGIN_D, END_D, new_data, "data tables")
+    updated = splice(updated, BEGIN_S, END_S, new_sources, "source count")
 
     combined_path = DATA / "cisco_all_products.csv"
     combined_now = combined_path.read_text(encoding="utf-8")
