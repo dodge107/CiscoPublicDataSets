@@ -181,7 +181,7 @@ Prefer in this order:
 |---|---|
 | `data/source_endpoints.yml` | Verified endpoint registry: working URLs, dead-URL replacements, fetch notes, discovery techniques, and open items. **Update this whenever a URL is confirmed or replaced.** |
 | `tools/check_sources.py` | HTTP status sweep over all registered source URLs. Run before a refresh to spot dead sources. |
-| `tools/validate.py` | Schema, ID format, prefix-to-file, `eol_status` enum, and `source_ids` referential-integrity checks. |
+| `tools/validate.py` | Schema, ID format, prefix-to-file, `eol_status` enum, `source_ids` referential integrity, and a cross-check that the README "OS Types Reference" table still documents the version trains actually present in the data. |
 | `tools/build.py` | Regenerates `data/cisco_all_products.csv` and the README data tables from the product CSVs. |
 | `tools/refresh_2026_09_29.py` | One-shot record of the 2026-09-29 refresh (97 rows). Kept as an audit trail of what was verified and why; not for reuse. |
 
@@ -189,6 +189,19 @@ Regenerate derived files after **any** product CSV change:
 ```
 python3 tools/build.py && python3 tools/validate.py
 ```
+
+### The OS Types cross-check
+The README "OS Types Reference" table is hand-written, because it documents
+version *formats* rather than values, so it is the section most likely to drift
+after a data refresh. `validate.py` guards it: for each documented OS it samples
+representative product IDs, derives the expected version train **from the data**
+(never hardcoded), and fails if none of the documented format tokens could
+describe that train.
+
+Adding a platform to the table means adding an entry to `OS_TYPES_CHECKS` in
+`validate.py`, otherwise nothing checks it. Values with no numeric train
+(`Continuous delivery`, `Manual verification required`, `Latest GA`) are skipped
+deliberately — there is nothing to compare.
 
 ## What NOT to do
 - Do not invent or guess product PIDs — only use known orderable Cisco PIDs

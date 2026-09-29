@@ -378,7 +378,7 @@ Fetch behaviour and known-good replacement URLs are recorded in `data/source_end
 | OS | Platforms | Version Format |
 |---|---|---|
 | **IOS-XE** | Catalyst 9000 switches, ISR/ASR/C8000 routers, Catalyst 9800 WLC, ASR 920, CUBE | `26.x.x` (from Apr 2026) / previously `17.x.x` |
-| **IOS-XR** | ASR 9000/9900, NCS 5500, Cisco 8000, NCS 540/560, XRv 9000, BNG | `26.x.x` (from 2026) / previously `7.x.x` |
+| **IOS-XR** | ASR 9000/9900, NCS 5500, Cisco 8000, NCS 540/560, XRv 9000, BNG | `26.3.x` (newest) / `25.2.x` (TAC-recommended EMR) / previously `7.x.x` |
 | **NX-OS** | Nexus 9000/7000/5000/3000/2000 | `10.x(y)F` (feature) or `10.x(y)M` (maintenance) |
 | **FTD** | Secure Firewall 1000/2100/3100/4100/4200, Firepower 9300 | `10.x` (from 2026) / previously `7.x.x` |
 | **FXOS** | Secure Firewall 4100, Firepower 9300 chassis | `2.x.x` (separate from FTD) |
@@ -402,7 +402,7 @@ Fetch behaviour and known-good replacement URLs are recorded in `data/source_end
 | **CIMC** | UCS C-Series standalone management | `4.3.x` / `6.0` |
 | **HXDP** | HyperFlex Data Platform | `5.x` / `6.0(1x)` |
 | **AsyncOS (Email)** | Cisco Secure Email Gateway | `16.x.x` |
-| **AsyncOS (Web)** | Cisco Secure Web Appliance | `15.x.x` |
+| **AsyncOS (Web)** | Cisco Secure Web Appliance | `16.x.x` (newest) / `15.x.x` (recommended) |
 | **StarOS** | ASR 5000/5500/5700, Ultra Packet Core | `2026.MM.x` (from 2024) / previously `21.x.x` |
 | **Cloud-native** | Ultra Cloud Core 5G SA NFs (AMF/SMF/UPF/PCF) | `2026.x` (containerised, Kubernetes) |
 | **BroadWorks OS** | Cisco BroadWorks | Release `26` / `27` (annual major releases) |
@@ -429,6 +429,10 @@ Two EMRs per year are now published instead of one. IOS-XR adopted the same year
 3. Fetch the source and update `latest_version` and `gold_version` in the product CSV.
 4. Update `last_verified` in `cisco_sources.csv` and `last_updated` in the product row.
 5. Run `python3 tools/build.py && python3 tools/validate.py`.
+
+> If `validate.py` reports `README OS Types: documents none of the tokens ...`, the
+> OS Types Reference table below no longer matches the data. Update the table — that
+> error means the documented version format and the recorded version have diverged.
 
 **Fetching rules — these are not optional:**
 

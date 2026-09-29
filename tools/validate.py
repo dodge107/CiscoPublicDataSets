@@ -9,6 +9,11 @@ Checks performed:
   5. Every source_ids value resolves to a row in cisco_sources.csv.
   6. last_updated / last_verified are ISO dates (YYYY-MM-DD).
   7. cisco_sources.csv source_id format, uniqueness and URL sanity.
+  8. The README "OS Types Reference" table still documents the version trains
+     that actually appear in the data. This is the guard against the hand-
+     written parts of the README silently going stale after a data refresh -
+     a failure mode that has already happened once (RoomOS was documented as
+     "26.x (year-based)" when no such build exists).
 
 Exit code 0 = all good, 1 = at least one ERROR. Warnings never fail the run.
 Run with --strict to also fail on warnings.
@@ -23,6 +28,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
+README = ROOT / "README.md"
 
 PRODUCT_HEADER = [
     "product_id", "product_family", "product_series", "example_pids",
@@ -35,6 +41,58 @@ EOL_VALUES = {"Active", "EOL", "EOL-Pending"}
 ID_RE = re.compile(r"^[A-Z]{3}-\d{3}$")
 SRC_RE = re.compile(r"^SRC-\d{3}$")
 ISO_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+# ---------------------------------------------------------------------------
+# README "OS Types Reference" cross-check
+# ---------------------------------------------------------------------------
+# The OS Types table is hand-written (it describes version *formats*, not
+# values), so it is the part of the README most likely to drift out of date.
+# For each documented OS we name a small set of representative product_ids; the
+# expected version train is then DERIVED FROM THE DATA rather than hardcoded, so
+# the check cannot itself go stale.
+#
+#   (README row label, product_ids to sample, extra literal that must appear)
+OS_TYPES_CHECKS: list[tuple[str, list[str], str | None]] = [
+    ("IOS-XE",            ["CSW-001", "WLS-001"], None),
+    ("IOS-XR",            ["SPR-001"], None),
+    ("NX-OS",             ["DCW-001"], None),
+    ("NX-OS (ACI mode)",  ["DCC-002"], None),
+    ("MDS NX-OS",         ["DCC-003"], None),
+    ("APIC OS",           ["DCC-001"], None),
+    ("FTD",               ["FWL-004"], None),
+    ("FXOS",              ["FWL-007"], None),
+    ("ASA OS",            ["FWL-003"], None),
+    ("IOS (Classic)",     ["CSW-014"], None),
+    ("UCSM",              ["DCC-007"], None),
+    ("HXDP",              ["DCC-012"], None),
+    ("Viptela OS",        ["SFT-014"], None),
+    ("AireOS",            ["WLS-008"], None),
+    ("AsyncOS (Email)",   ["SES-001"], None),
+    ("AsyncOS (Web)",     ["SES-003"], None),
+    ("StarOS",            ["SPM-002"], None),
+    ("UC OS",             ["CLB-001"], None),
+    ("Expressway OS",     ["CLB-003"], None),
+    ("RoomOS",            ["CLB-008"], None),
+    ("Meraki MX firmware", ["MRK-001"], None),
+    ("Meraki MS firmware", ["MRK-005"], None),
+    ("Meraki MR firmware", ["MRK-009"], None),
+    ("Meraki MG firmware", ["MRK-015"], None),
+    ("BroadWorks OS",     ["SPM-009"], "27"),
+]
+
+# Leading version train, e.g.
+#   "17.18.4a (with APSP2)" -> "17.18.4"
+#   "MX 26.2.X"             -> "26.2"
+#   "X15.5.x"               -> "X15.5"
+#   "Continuous delivery"   -> None
+TRAIN_RE = re.compile(r"^[A-Za-z]*\d+(?:\.\d+)*")
+
+# Values that are deliberately not numeric and cannot be train-checked.
+NON_VERSION = re.compile(
+    r"^(manual|latest ga|continuous|tracks |inherits |intersight|converged|"
+    r"appliance|1\.0\.9|uaas)",
+    re.I,
+)
 
 # file stem -> expected product-id prefix
 PREFIXES = {
@@ -65,6 +123,55 @@ def err(msg: str) -> None:
 
 def warn(msg: str) -> None:
     warnings.append(msg)
+
+
+# ---------------------------------------------------------------------------
+# README OS Types cross-check helpers
+# ---------------------------------------------------------------------------
+def parse_os_types_table(text: str) -> dict[str, str]:
+    """Return {OS label: full row text} for the README OS Types Reference table."""
+    start = text.find("## OS Types Reference")
+    if start == -1:
+        return {}
+    rest = text[start:]
+    nxt = rest.find("\n## ", 3)
+    section = rest if nxt == -1 else rest[:nxt]
+
+    rows: dict[str, str] = {}
+    for line in section.splitlines():
+        line = line.strip()
+        if not line.startswith("|") or line.startswith("|---") or "OS |" in line:
+            continue
+        cells = [c.strip() for c in line.strip("|").split("|")]
+        if len(cells) < 3:
+            continue
+        label = cells[0].strip("*").strip()
+        if label:
+            rows[label] = line
+    return rows
+
+
+def version_train(value: str) -> str | None:
+    """Extract the leading version train, or None for non-numeric values."""
+    v = (value or "").strip()
+    if not v or NON_VERSION.match(v):
+        return None
+    m = TRAIN_RE.match(v)
+    return m.group(0) if m else None
+
+
+def token_covers(token: str, train: str) -> bool:
+    """Does a documented format token plausibly describe this version train?
+
+    Wildcards (x / X / MM) and parenthesised groups are ignored; the literal
+    prefix in front of the first wildcard is what has to line up. Compared in
+    both directions so that `26.x.x` covers a `26.2` train and `3.212` covers
+    a `3.212` train.
+    """
+    lit = re.split(r"[xX]|MM|\(|\)", token.strip("` ").strip(), maxsplit=1)[0].strip()
+    if not lit:
+        return True  # token is entirely wildcard - covers anything
+    return train.startswith(lit) or lit.startswith(train)
 
 
 def read_csv(path: Path) -> list[dict]:
@@ -110,6 +217,7 @@ def main() -> int:
 
     # ---- product files -----------------------------------------------------
     seen_ids: dict[str, str] = {}
+    by_id: dict[str, dict] = {}
     total_rows = 0
 
     for stem, prefix in PREFIXES.items():
@@ -139,6 +247,7 @@ def main() -> int:
                 err(f"{loc}: duplicate product_id {pid} (also in {seen_ids[pid]})")
             else:
                 seen_ids[pid] = path.name
+            by_id[pid] = row
 
             eol = (row.get("eol_status") or "").strip()
             if eol not in EOL_VALUES:
@@ -163,6 +272,45 @@ def main() -> int:
             for col in ("latest_version", "gold_version"):
                 if not (row.get(col) or "").strip():
                     warn(f"{loc} ({pid}): {col} is empty")
+
+    # ---- README OS Types cross-check ---------------------------------------
+    # Guards the hand-written part of the README against drift after a refresh.
+    if not README.exists():
+        warn("README.md not found - skipping the OS Types cross-check")
+    else:
+        os_rows = parse_os_types_table(README.read_text(encoding="utf-8"))
+        if not os_rows:
+            err("README.md: could not parse the 'OS Types Reference' table")
+        else:
+            for label, pids, literal in OS_TYPES_CHECKS:
+                row_text = os_rows.get(label)
+                if row_text is None:
+                    err(f"README OS Types: no row labelled {label!r} (table may have been restructured)")
+                    continue
+
+                tokens = re.findall(r"`([^`]+)`", row_text)
+                if literal and literal not in row_text:
+                    err(
+                        f"README OS Types [{label}]: does not mention {literal!r}, "
+                        f"but the data uses it"
+                    )
+
+                for pid in pids:
+                    prow = by_id.get(pid)
+                    if prow is None:
+                        warn(f"README OS Types [{label}]: sample id {pid} not found in the data")
+                        continue
+                    for col in ("latest_version", "gold_version"):
+                        val = (prow.get(col) or "").strip()
+                        train = version_train(val)
+                        if train is None:
+                            continue  # SaaS / "Manual verification required" etc.
+                        if not any(token_covers(t, train) for t in tokens):
+                            err(
+                                f"README OS Types [{label}]: documents none of the "
+                                f"tokens {tokens} that describe {pid}.{col}={val!r} "
+                                f"(train {train!r}). Update the table."
+                            )
 
     # ---- freshness signal --------------------------------------------------
     # If every row shares one date, the field carries no information: it means the
